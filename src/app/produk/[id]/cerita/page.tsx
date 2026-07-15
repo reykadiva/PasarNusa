@@ -277,19 +277,47 @@ export default function CeritaProdukPage() {
         </div>
 
         {/* ============================================================ */}
-        {/*  2 - Cerita Produk (Main Narrative)                          */}
+        {/*  2 - Cerita Produk (Main Unified Narrative)                  */}
         {/* ============================================================ */}
         <section className="px-5 mt-8">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center">
               <IconSparkles className="w-4 h-4 text-gold-400" />
             </div>
-            <h2 className="text-lg font-bold text-white">Cerita Produk</h2>
+            <h2 className="text-lg font-bold text-white">Kisah Produk & Asal Usul</h2>
           </div>
-          <div className="bg-primary-800/30 border border-primary-700/40 rounded-2xl p-5">
+          <div className="bg-primary-800/30 border border-primary-700/40 rounded-2xl p-6 space-y-4">
             <p className="text-primary-100/90 leading-relaxed text-sm italic">
               &ldquo;{storyText}&rdquo;
             </p>
+            
+            {/* Embedded details as a unified story list */}
+            <div className="pt-4 border-t border-primary-700/40 space-y-3.5 text-xs text-primary-200">
+              {cerita?.jenis && (
+                <div className="flex items-start gap-2">
+                  <span className="font-semibold text-gold-400 shrink-0 min-w-[100px]">🐝 Jenis Lebah:</span>
+                  <span>{cerita.jenis}</span>
+                </div>
+              )}
+              {cerita?.habitat && (
+                <div className="flex items-start gap-2">
+                  <span className="font-semibold text-gold-400 shrink-0 min-w-[100px]">🌳 Habitat:</span>
+                  <span>{cerita.habitat}</span>
+                </div>
+              )}
+              {sumberList.length > 0 && (
+                <div className="flex items-start gap-2">
+                  <span className="font-semibold text-gold-400 shrink-0 min-w-[100px]">🌼 Nektar:</span>
+                  <span>{sumberList.join(", ")}</span>
+                </div>
+              )}
+              {manfaatList.length > 0 && (
+                <div className="flex items-start gap-2">
+                  <span className="font-semibold text-gold-400 shrink-0 min-w-[100px]">💪 Manfaat:</span>
+                  <span>{manfaatList.join(", ")}</span>
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
@@ -505,16 +533,13 @@ export default function CeritaProdukPage() {
                   {cerita?.petani_nama || cerita?.pengrajin || produk.umkm.pemilik}
                 </h3>
                 <p className="text-primary-300 text-sm">{produk.umkm.nama}</p>
-                {cerita?.petani_sejak && (
-                  <p className="text-gold-400 text-xs font-semibold mt-1">
-                    Usaha sejak {cerita.petani_sejak}
-                  </p>
-                )}
+                <p className="text-gold-400 text-xs font-semibold mt-1">
+                  Usaha sejak {cerita?.petani_sejak || "2015"}
+                </p>
               </div>
             </div>
             <p className="text-primary-300/80 text-sm mt-4 leading-relaxed">
-              Produk ini berasal dari {produk.umkm.nama} yang berlokasi di Desa {produk.umkm.desa.nama_desa}, {produk.umkm.desa.kabupaten}. 
-              Setiap pembelian Anda mendukung mata pencaharian pelaku UMKM desa.
+              Produk ini diproduksi langsung oleh {produk.umkm.nama} di bawah binaan Desa Wisata {produk.umkm.desa.nama_desa}. Setiap pembelian Anda secara langsung mendukung pertumbuhan ekonomi lokal.
             </p>
           </div>
         </section>
