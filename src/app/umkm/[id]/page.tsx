@@ -98,7 +98,12 @@ export default function DetailUMKMPage() {
               {umkm.nama.charAt(0)}
             </div>
             <div className="space-y-3">
-              <span className="badge">?? UMKM Terverifikasi</span>
+              <span className="badge flex items-center gap-1 w-max">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3.5 h-3.5 text-primary-600">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                </svg>
+                UMKM Terverifikasi
+              </span>
               <h1 className="text-3xl font-bold text-gray-900 dark:text-white font-display">{umkm.nama}</h1>
               <p className="text-gray-600 dark:text-gray-300">Pemilik: <span className="font-semibold text-gray-800 dark:text-white">{umkm.pemilik}</span></p>
               <p className="text-gray-600 dark:text-gray-300">Alamat: <span className="italic">{umkm.alamat}</span></p>
@@ -107,9 +112,12 @@ export default function DetailUMKMPage() {
                   href={`https://wa.me/${umkm.no_hp}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-primary py-2 px-4 text-sm"
+                  className="btn-primary py-2 px-4 text-sm flex items-center gap-2 w-max"
                 >
-                  ?? Hubungi Penjual ({umkm.no_hp})
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+                  </svg>
+                  Hubungi Penjual ({umkm.no_hp})
                 </a>
               </div>
             </div>
@@ -157,9 +165,12 @@ export default function DetailUMKMPage() {
               href={`https://www.google.com/maps/search/?api=1&query=${umkm.desa.latitude},${umkm.desa.longitude}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary w-full text-center text-sm py-2 block"
+              className="btn-secondary w-full text-center text-sm py-2 flex items-center justify-center gap-2"
             >
-              ?? Lihat di Google Maps
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-wood-700">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.446 3.602-1.2a1.125 1.125 0 0 0 .748-1.066V7.484a1.125 1.125 0 0 0-.748-1.066L15 4.875M9 6.75 5.25 5.562A1.125 1.125 0 0 0 4.5 6.628v11.233a1.125 1.125 0 0 0 .748 1.066L9 20.25m0-13.5v13.5m6-13.5v13.5m-6 0 6-2.25" />
+              </svg>
+              Lihat di Google Maps
             </a>
           </div>
         </div>

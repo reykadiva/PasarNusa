@@ -129,7 +129,9 @@ export default function DetailProdukPage() {
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{produk.nama}</h1>
             
             <div className="flex items-center gap-2 text-sm text-gray-500">
-              <span>??</span>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-primary-600">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64M18 21V9.75M18 9.75v-.75A2.25 2.25 0 0 0 15.75 6.75h-7.5A2.25 2.25 0 0 0 6 9v.75m12 0a2.25 2.25 0 0 1-2.25 2.25H8.25A2.25 2.25 0 0 1 6 9.75m12 0a2.25 2.25 0 0 0-2.25-2.25H8.25A2.25 2.25 0 0 0 6 9.75M6 9.75V21m0 0H2.25m4.5 0h11.25" />
+              </svg>
               <Link href={`/umkm/${produk.umkm.id}`} className="hover:underline font-semibold text-primary-600">
                 {produk.umkm.nama}
               </Link>
@@ -148,7 +150,10 @@ export default function DetailProdukPage() {
               onClick={handleHubungiPenjual}
               className="w-full btn-primary flex justify-center items-center gap-2"
             >
-              <span>??</span> Hubungi Penjual
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+              </svg>
+              Hubungi Penjual
             </button>
           </div>
 
@@ -187,9 +192,12 @@ export default function DetailProdukPage() {
               href={`https://www.google.com/maps/search/?api=1&query=${produk.umkm.desa.latitude},${produk.umkm.desa.longitude}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary w-full text-center text-xs py-2 block"
+              className="btn-secondary w-full text-center text-xs py-2 flex items-center justify-center gap-2"
             >
-              ?? Lihat di Google Maps
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-wood-700">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.446 3.602-1.2a1.125 1.125 0 0 0 .748-1.066V7.484a1.125 1.125 0 0 0-.748-1.066L15 4.875M9 6.75 5.25 5.562A1.125 1.125 0 0 0 4.5 6.628v11.233a1.125 1.125 0 0 0 .748 1.066L9 20.25m0-13.5v13.5m6-13.5v13.5m-6 0 6-2.25" />
+              </svg>
+              Lihat di Google Maps
             </a>
           </div>
         </div>

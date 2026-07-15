@@ -79,10 +79,16 @@ export default function AdminDashboard() {
         </div>
         <div className="flex gap-2 w-full sm:w-auto">
           <button onClick={exportPDFPrint} className="btn-secondary py-2 px-4 text-sm flex items-center gap-2">
-            ?? Cetak Laporan (PDF)
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h-11.32m11.32 0a49.211 49.211 0 0 0-1.12-7.5M6.34 18a49.211 49.211 0 0 1 1.12-7.5m0 0a4.125 4.125 0 0 1 4.125-4.125h3.75A4.125 4.125 0 0 1 16.5 10.5m-9.036 0a39.002 39.002 0 0 1 9.036 0M15 6.75V4.875c0-.621-.504-1.125-1.125-1.125h-3.75c-.621 0-1.125.504-1.125 1.125V6.75M9.75 12h4.5m-4.5 3h4.5" />
+            </svg>
+            Cetak Laporan (PDF)
           </button>
           <button onClick={exportCSV} className="btn-gold py-2 px-4 text-sm flex items-center gap-2">
-            ?? Ekspor Excel (CSV)
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-wood-900">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125V3.375c0-.621.504-1.125 1.125-1.125h12.75c.621 0 1.125.504 1.125 1.125v1.5m-15 15a1.125 1.125 0 0 0 1.125 1.125h17.25a1.125 1.125 0 0 0 1.125-1.125V14.25m-18.75 4.5V10.5m18.75 4.5V10.5m-18.75 0a1.125 1.125 0 0 1 1.125-1.125h17.25c.621 0 1.125.504 1.125 1.125m-18.75 0V3.375c0-.621.504-1.125 1.125-1.125h12.75M3.75 6v3.75m0-3.75h16.5m-16.5 0v3.75m16.5-3.75v3.75m-16.5 0h16.5m-16.5 0v3.75m16.5-3.75v3.75m-16.5 0h16.5m-16.5 0V14.25m16.5-3.75V14.25m-16.5 0h16.5" />
+            </svg>
+            Ekspor Excel (CSV)
           </button>
         </div>
       </div>

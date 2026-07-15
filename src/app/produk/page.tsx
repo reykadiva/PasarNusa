@@ -225,7 +225,11 @@ export default function ProdukPage() {
                 onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
                 className="input-field py-2 pl-10 text-sm"
               />
-              <span className="absolute left-3 top-2.5 text-gray-400">??</span>
+              <span className="absolute left-3 top-2.5 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.637 10.637Z" />
+                </svg>
+              </span>
             </div>
 
             <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
@@ -265,8 +269,12 @@ export default function ProdukPage() {
                       <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors line-clamp-2">
                         {produk.nama}
                       </h4>
-                      <p className="text-xs text-gray-500 mt-1">
-                        ?? {produk.umkm?.desa?.nama_desa}, {produk.umkm?.desa?.kabupaten}
+                      <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-primary-600">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                        </svg>
+                        {produk.umkm?.desa?.nama_desa}, {produk.umkm?.desa?.kabupaten}
                       </p>
                       <p className="text-xs text-gray-400">
                         Oleh: {produk.umkm?.nama}

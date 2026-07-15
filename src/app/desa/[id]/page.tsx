@@ -100,7 +100,13 @@ export default function DetailDesaPage() {
       {/* Header Panel */}
       <div className="card p-8 bg-gradient-to-r from-primary-900 to-primary-700 text-white mb-8">
         <div className="max-w-3xl">
-          <span className="badge-gold mb-3">?? Detail Desa Wisata</span>
+          <span className="badge-gold mb-3 flex items-center gap-1 w-max">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-3.5 h-3.5">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+            </svg>
+            Detail Desa Wisata
+          </span>
           <h1 className="text-3xl md:text-4xl font-bold font-display mb-2">{desa.nama_desa}</h1>
           <p className="text-primary-100 text-lg">Kecamatan {desa.kecamatan}, Kabupaten {desa.kabupaten}</p>
           <div className="flex gap-6 mt-6 text-sm text-gold-200">
@@ -157,7 +163,9 @@ export default function DetailDesaPage() {
                 {umkms.map((umkm) => (
                   <Link href={`/umkm/${umkm.id}`} key={umkm.id} className="card p-5 hover:border-primary-500 transition-all flex gap-3 items-center">
                     <div className="w-12 h-12 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-bold text-lg">
-                      ??
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5-1.5-3-1m-1.5.545 3 1m-1.5-3.75v3.75m-1.5-3.75h3" />
+                      </svg>
                     </div>
                     <div>
                       <h4 className="font-bold text-gray-950 dark:text-white">{umkm.nama}</h4>
@@ -181,9 +189,12 @@ export default function DetailDesaPage() {
               href={`https://www.google.com/maps/search/?api=1&query=${desa.latitude},${desa.longitude}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary w-full text-center text-sm py-2.5 block"
+              className="btn-primary w-full text-center text-sm py-2.5 flex items-center justify-center gap-2"
             >
-              ?? Buka di Google Maps
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.446 3.602-1.2a1.125 1.125 0 0 0 .748-1.066V7.484a1.125 1.125 0 0 0-.748-1.066L15 4.875M9 6.75 5.25 5.562A1.125 1.125 0 0 0 4.5 6.628v11.233a1.125 1.125 0 0 0 .748 1.066L9 20.25m0-13.5v13.5m6-13.5v13.5m-6 0 6-2.25" />
+              </svg>
+              Buka di Google Maps
             </a>
           </div>
         </div>
