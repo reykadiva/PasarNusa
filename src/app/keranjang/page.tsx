@@ -65,27 +65,17 @@ export default function KeranjangPage() {
   const router = useRouter();
   const { items, removeItem, updateQty, clearCart, totalItems, totalPrice } = useCart();
 
-  // Group items by UMKM for multi-seller checkout
-  const groupedByUmkm = items.reduce((acc, item) => {
-    const key = item.umkmNama;
-    if (!acc[key]) {
-      acc[key] = { noHp: item.umkmNoHp, items: [] };
-    }
-    acc[key].items.push(item);
-    return acc;
-  }, {} as Record<string, { noHp: string; items: typeof items }>);
-
   const handleCheckoutAll = () => {
-    // Build one WhatsApp message per seller
-    Object.entries(groupedByUmkm).forEach(([umkmNama, { noHp, items: sellerItems }]) => {
-      const itemLines = sellerItems
-        .map((it, i) => `${i + 1}. ${it.nama} (${it.qty} ${it.satuan || 'pcs'}) = ${formatRupiah(it.harga * it.qty)}`)
-        .join("\n");
-      const sellerTotal = sellerItems.reduce((s, it) => s + it.harga * it.qty, 0);
+    // Build a single WhatsApp message to admin with all items
+    const itemLines = items
+      .map((it, i) => {
+        const satuanText = it.satuan && it.satuan !== "pcs" ? ` @${it.satuan}` : "";
+        return `${i + 1}. ${it.nama} (${it.qty}x${satuanText}) = ${formatRupiah(it.harga * it.qty)}`;
+      })
+      .join("\n");
 
-      const message = `Halo ${umkmNama}, saya ingin memesan produk dari PasarNusa:\n\n${itemLines}\n\nTotal: ${formatRupiah(sellerTotal)}\n\nMohon informasi ketersediaan dan ongkos kirimnya. Terima kasih!`;
-      window.open(`https://wa.me/${noHp}?text=${encodeURIComponent(message)}`, "_blank");
-    });
+    const message = `Halo Admin PasarNusa, saya ingin memesan:\n\n${itemLines}\n\nTotal: ${formatRupiah(totalPrice)}\n\nMohon informasi ketersediaan dan ongkos kirimnya. Terima kasih!`;
+    window.open(`https://wa.me/6285267900655?text=${encodeURIComponent(message)}`, "_blank");
   };
 
   return (
