@@ -15,6 +15,7 @@ interface Produk {
   stok: number;
   gambar: string;
   deskripsi: string;
+  satuan?: string;
   kategori: { nama: string };
   umkm: {
     id: string;
@@ -155,8 +156,15 @@ export default function DetailProdukPage() {
               </Link>
             </div>
 
-            <div className="text-3xl font-extrabold text-primary-700 dark:text-primary-400 my-4">
-              {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(produk.harga)}
+            <div className="flex items-baseline gap-1 my-4">
+               <span className="text-3xl font-extrabold text-primary-700 dark:text-primary-400">
+                 {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(produk.harga)}
+               </span>
+               {produk.satuan && (
+                 <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                   / {produk.satuan}
+                 </span>
+               )}
             </div>
 
             <div className="flex justify-between text-sm border-t border-b border-gray-100 dark:border-[#2d4a2d] py-3 text-gray-600 dark:text-gray-300">
@@ -183,6 +191,7 @@ export default function DetailProdukPage() {
                   gambar: produk.gambar,
                   umkmNama: produk.umkm.nama,
                   umkmNoHp: produk.umkm.no_hp,
+                  satuan: produk.satuan,
                 });
                 setAddedToCart(true);
                 setTimeout(() => setAddedToCart(false), 2000);

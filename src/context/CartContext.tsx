@@ -14,6 +14,7 @@ export interface CartItem {
   umkmNama: string;
   umkmNoHp: string;
   qty: number;
+  satuan?: string;
 }
 
 interface CartContextType {

@@ -79,7 +79,7 @@ export default function KeranjangPage() {
     // Build one WhatsApp message per seller
     Object.entries(groupedByUmkm).forEach(([umkmNama, { noHp, items: sellerItems }]) => {
       const itemLines = sellerItems
-        .map((it, i) => `${i + 1}. ${it.nama} x${it.qty} = ${formatRupiah(it.harga * it.qty)}`)
+        .map((it, i) => `${i + 1}. ${it.nama} (${it.qty} ${it.satuan || 'pcs'}) = ${formatRupiah(it.harga * it.qty)}`)
         .join("\n");
       const sellerTotal = sellerItems.reduce((s, it) => s + it.harga * it.qty, 0);
 
@@ -157,7 +157,10 @@ export default function KeranjangPage() {
                     {item.nama}
                   </Link>
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{item.umkmNama}</p>
-                  <p className="text-primary-700 dark:text-primary-400 font-bold mt-1">{formatRupiah(item.harga)}</p>
+                  <p className="text-primary-700 dark:text-primary-400 font-bold mt-1">
+                    {formatRupiah(item.harga)}
+                    {item.satuan && <span className="text-xs text-gray-500 font-normal"> / {item.satuan}</span>}
+                  </p>
 
                   {/* Quantity Controls */}
                   <div className="flex items-center gap-3 mt-3">

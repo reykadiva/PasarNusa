@@ -14,6 +14,7 @@ interface Produk {
   deskripsi: string;
   created_at: string;
   kategori: { nama: string };
+  satuan?: string;
   umkm: {
     nama: string;
     desa: { nama_desa: string; kabupaten: string };
@@ -281,9 +282,16 @@ export default function ProdukPage() {
                       </p>
                     </div>
                     <div className="mt-4 pt-3 border-t border-gray-100 dark:border-[#2d4a2d] flex justify-between items-center">
-                      <span className="font-bold text-primary-700 dark:text-primary-400">
-                        {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(produk.harga)}
-                      </span>
+                      <div className="flex flex-col items-start">
+                        <span className="font-bold text-primary-700 dark:text-primary-400">
+                          {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(produk.harga)}
+                        </span>
+                        {produk.satuan && (
+                          <span className="text-[10px] text-gray-400 font-medium">
+                            per {produk.satuan}
+                          </span>
+                        )}
+                      </div>
                       <span className="text-xs text-gray-500">Stok: {produk.stok}</span>
                     </div>
                   </div>
