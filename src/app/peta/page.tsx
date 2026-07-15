@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 
 interface Desa {
@@ -21,6 +22,7 @@ interface UMKM {
 
 export default function PetaPage() {
   const supabase = createClient();
+  const router = useRouter();
   const [umkms, setUmkms] = useState<UMKM[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedUmkm, setSelectedUmkm] = useState<UMKM | null>(null);
@@ -52,9 +54,20 @@ export default function PetaPage() {
 
   return (
     <div className="section-container py-8">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white font-display">Peta Sebaran UMKM</h1>
-        <p className="text-gray-500 mt-1">Cari dan temukan lokasi fisik pelaku UMKM desa binaan di peta interaktif.</p>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white font-display">Peta Sebaran UMKM</h1>
+          <p className="text-gray-500 mt-1">Cari dan temukan lokasi fisik pelaku UMKM desa binaan di peta interaktif.</p>
+        </div>
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-primary-950 border border-gray-200 dark:border-primary-800 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-primary-900/50 transition-colors shadow-sm"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Kembali
+        </button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

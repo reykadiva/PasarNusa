@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 
 // ponytail: Simplified single interface for product detail view
@@ -35,6 +35,7 @@ interface Produk {
 export default function DetailProdukPage() {
   const params = useParams();
   const id = params.id as string;
+  const router = useRouter();
   const supabase = createClient();
   
   const [produk, setProduk] = useState<Produk | null>(null);
@@ -96,10 +97,23 @@ export default function DetailProdukPage() {
 
   return (
     <div className="section-container py-8">
-      <div className="text-sm text-gray-500 mb-6">
-        <Link href="/" className="hover:underline">Beranda</Link> &gt;{" "}
-        <Link href="/produk" className="hover:underline">Produk</Link> &gt;{" "}
-        <span className="text-gray-900 dark:text-white font-semibold">{produk.nama}</span>
+      {/* Back Button & Breadcrumb */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-primary-950 border border-gray-200 dark:border-primary-800 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-primary-900/50 transition-colors shadow-sm"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+          </svg>
+          Kembali
+        </button>
+
+        <div className="text-sm text-gray-500">
+          <Link href="/" className="hover:underline">Beranda</Link> &gt;{" "}
+          <Link href="/produk" className="hover:underline">Produk</Link> &gt;{" "}
+          <span className="text-gray-900 dark:text-white font-semibold">{produk.nama}</span>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
