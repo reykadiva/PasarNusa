@@ -44,13 +44,25 @@ export default function DetailProdukPage() {
   const [loading, setLoading] = useState(true);
   const [qrUrl, setQrUrl] = useState("");
   const [addedToCart, setAddedToCart] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const { addItem } = useCart();
 
   useEffect(() => {
     async function fetchDetail() {
+      // Get user session
+      const { data: { user: authUser } } = await supabase.auth.getUser();
+      setUser(authUser);
+
       const { data, error } = await supabase
         .from("produk")
-        .select("*, kategori(nama), umkm(*, desa(*))")
+        .select(`
+          *,
+          kategori:kategori_id(nama),
+          umkm:umkm_id(
+            id, nama, pemilik, no_hp, alamat,
+            desa:desa_id(*)
+          )
+        `)
         .eq("id", id)
         .single();
 
@@ -182,6 +194,10 @@ export default function DetailProdukPage() {
 
             <button
               onClick={() => {
+                if (!user) {
+                  router.push(`/login?redirect=/produk/${produk.id}`);
+                  return;
+                }
                 addItem({
                   id: produk.id,
                   nama: produk.nama,
@@ -225,15 +241,22 @@ export default function DetailProdukPage() {
               <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 italic">
                 &ldquo;{produk.deskripsi}&rdquo;
               </p>
-              <Link
-                href={`/produk/${produk.id}/cerita`}
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (!user) {
+                    router.push(`/login?redirect=/produk/${produk.id}/cerita`);
+                  } else {
+                    router.push(`/produk/${produk.id}/cerita`);
+                  }
+                }}
                 className="btn-primary w-full text-center text-xs py-2.5 flex items-center justify-center gap-2"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
                 </svg>
                 Baca Cerita Produk
-              </Link>
+              </button>
             </div>
           </div>
 

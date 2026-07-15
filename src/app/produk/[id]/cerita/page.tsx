@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 
 /* ------------------------------------------------------------------ */
@@ -154,6 +154,7 @@ function parseList(value: string | undefined): string[] {
 
 export default function CeritaProdukPage() {
   const params = useParams();
+  const router = useRouter();
   const id = params.id as string;
   const supabase = createClient();
 
@@ -163,6 +164,12 @@ export default function CeritaProdukPage() {
 
   useEffect(() => {
     async function fetchData() {
+      // 1. Verify user session
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        router.push(`/login?redirect=/produk/${id}/cerita`);
+        return;
+      }
       // Fetch produk
       const { data: produkData } = await supabase
         .from("produk")

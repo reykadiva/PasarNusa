@@ -1,9 +1,11 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
+import { createClient } from "@/utils/supabase/client";
 
 /* ------------------------------------------------------------------ */
 /*  SVG Icons                                                          */
@@ -63,7 +65,21 @@ function formatRupiah(n: number): string {
 
 export default function KeranjangPage() {
   const router = useRouter();
+  const supabase = createClient();
   const { items, removeItem, updateQty, clearCart, totalItems, totalPrice } = useCart();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function checkAuth() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        router.push("/login?redirect=/keranjang");
+        return;
+      }
+      setLoading(false);
+    }
+    checkAuth();
+  }, [router, supabase]);
 
   const handleCheckoutAll = () => {
     // Build a single WhatsApp message to admin with all items
@@ -77,6 +93,14 @@ export default function KeranjangPage() {
     const message = `Halo Admin PasarNusa, saya ingin memesan:\n\n${itemLines}\n\nTotal: ${formatRupiah(totalPrice)}\n\nMohon informasi ketersediaan dan ongkos kirimnya. Terima kasih!`;
     window.open(`https://wa.me/6285267900655?text=${encodeURIComponent(message)}`, "_blank");
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="text-gray-500 font-semibold animate-pulse">Memuat keranjang belanja...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="section-container py-8">
