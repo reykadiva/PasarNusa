@@ -81,7 +81,11 @@ function LoginForm() {
       });
 
       if (signUpError) {
-        setErrorMsg(signUpError.message);
+        if (signUpError.message.toLowerCase().includes("confirm")) {
+          setErrorMsg("Pendaftaran sukses! Namun Anda harus melakukan konfirmasi email (atau nonaktifkan 'Confirm email' di dashboard Supabase -> Authentication -> Providers -> Email -> turn off 'Confirm email').");
+        } else {
+          setErrorMsg(signUpError.message);
+        }
         setLoading(false);
         return;
       }
@@ -93,7 +97,11 @@ function LoginForm() {
       });
 
       if (signInRetryError) {
-        setErrorMsg(signInRetryError.message);
+        if (signInRetryError.message.toLowerCase().includes("confirm")) {
+          setErrorMsg("Email not confirmed. Silakan konfirmasi email Anda, atau nonaktifkan pilihan 'Confirm email' di Supabase Dashboard -> Authentication -> Providers -> Email -> matikan toggle 'Confirm email' agar demo bisa langsung masuk.");
+        } else {
+          setErrorMsg(signInRetryError.message);
+        }
         setLoading(false);
       } else {
         setSuccessMsg(`Berhasil mendaftarkan & login sebagai ${role === "admin" ? "Admin" : "User"}!`);
@@ -123,13 +131,25 @@ function LoginForm() {
 
       {errorMsg && (
         <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 p-3.5 rounded-xl text-xs font-semibold leading-relaxed">
-          ⚠️ {errorMsg}
+          {errorMsg.includes("Confirm email") || errorMsg.includes("confirmed") ? (
+            <div>
+              <p className="font-bold mb-1">Email Belum Dikonfirmasi</p>
+              <p className="font-normal text-[11px] opacity-90 leading-relaxed">
+                Supabase memblokir login sebelum email dikonfirmasi. Agar demo akses cepat bisa langsung masuk tanpa konfirmasi email, silakan nonaktifkan pengaturannya di:
+              </p>
+              <div className="bg-red-100/50 dark:bg-red-950/40 p-2 rounded-lg mt-2 font-mono text-[10px] text-red-800 dark:text-red-300">
+                Supabase Dashboard &gt; Authentication &gt; Providers &gt; Email &gt; Matikan toggle &quot;Confirm email&quot;
+              </div>
+            </div>
+          ) : (
+            errorMsg
+          )}
         </div>
       )}
 
       {successMsg && (
         <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900 text-green-600 dark:text-green-400 p-3.5 rounded-xl text-xs font-semibold">
-          🎉 {successMsg}
+          {successMsg}
         </div>
       )}
 
@@ -184,7 +204,7 @@ function LoginForm() {
           disabled={loading}
           className="btn-secondary py-2.5 text-xs font-bold flex flex-col items-center justify-center gap-1 hover:border-primary-600/50"
         >
-          <span className="text-gray-900 dark:text-white">🧑 Akun User</span>
+          <span className="text-gray-900 dark:text-white">Akun User</span>
           <span className="text-[9px] text-gray-400 font-normal">user@pasarnusa.com</span>
         </button>
 
@@ -194,7 +214,7 @@ function LoginForm() {
           disabled={loading}
           className="btn-gold py-2.5 text-xs font-bold flex flex-col items-center justify-center gap-1 hover:border-gold-600/50"
         >
-          <span className="text-wood-950">👑 Akun Admin</span>
+          <span className="text-wood-950">Akun Admin</span>
           <span className="text-[9px] text-wood-700/80 font-normal">admin@pasarnusa.com</span>
         </button>
       </div>
