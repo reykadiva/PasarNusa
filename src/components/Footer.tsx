@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -47,7 +47,7 @@ export default function Footer() {
                 Email: pasardesa@gmail.com
               </li>
               <li className="flex items-center gap-2">
-                Telp: +62 812-3456-7890
+                Telp: +62 852-6790-0655
               </li>
               <li className="flex items-center gap-2">
                 Lokasi: Desa Wisata Indonesia
