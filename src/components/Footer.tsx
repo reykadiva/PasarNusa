@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Logo & Tagline */}
           <div className="space-y-4">
             <span className="flex items-center gap-2 font-display text-2xl font-bold text-gradient-gold">
-              <span>🌾</span> Pasar Desa
+              <span>??</span> PasarNusa
             </span>
             <p className="text-primary-100 text-sm leading-relaxed">
               Platform terpercaya menghubungkan Anda langsung dengan produk-produk asli karya UMKM dan desa di seluruh penjuru Indonesia.
@@ -44,13 +44,13 @@ export default function Footer() {
             <h4 className="font-bold text-lg mb-4 text-gold-300">Hubungi Kami</h4>
             <ul className="space-y-2 text-sm text-primary-200">
               <li className="flex items-center gap-2">
-                <span>📧</span> pasardesa@gmail.com
+                <span>??</span> pasardesa@gmail.com
               </li>
               <li className="flex items-center gap-2">
-                <span>📞</span> +62 812-3456-7890
+                <span>??</span> +62 812-3456-7890
               </li>
               <li className="flex items-center gap-2">
-                <span>📍</span> Desa Wisata Indonesia
+                <span>??</span> Desa Wisata Indonesia
               </li>
             </ul>
           </div>
@@ -59,11 +59,11 @@ export default function Footer() {
         <hr className="border-primary-800 my-6" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-primary-300 gap-4">
-          <p>© 2024 Pasar Desa Digital. Semua hak dilindungi.</p>
+          <p>� 2024 PasarNusa. Semua hak dilindungi.</p>
           <div className="flex gap-4">
-            <span className="cursor-pointer hover:text-gold-400">🌐 Instagram</span>
-            <span className="cursor-pointer hover:text-gold-400">📘 Facebook</span>
-            <span className="cursor-pointer hover:text-gold-400">🐦 Twitter</span>
+            <span className="cursor-pointer hover:text-gold-400">?? Instagram</span>
+            <span className="cursor-pointer hover:text-gold-400">?? Facebook</span>
+            <span className="cursor-pointer hover:text-gold-400">?? Twitter</span>
           </div>
         </div>
       </div>

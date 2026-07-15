@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Pasar Desa Digital - Belanja Lokal, Bangun Desa",
+  title: "PasarNusa - Belanja Lokal, Bangun Desa",
   description: "Platform penghubung masyarakat dengan produk asli dari UMKM dan desa wisata di seluruh Indonesia.",
 };
 

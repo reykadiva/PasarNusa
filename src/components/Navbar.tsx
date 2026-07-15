@@ -14,7 +14,6 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 10);
     };
 
-    // Check system preference
     if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
       setDarkMode(true);
       document.documentElement.classList.add("dark");
@@ -45,7 +44,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold text-gradient">
-            <span>??</span> Pasar Desa Digital
+            <span>??</span> PasarNusa
           </Link>
 
           {/* Desktop Nav Links */}
@@ -58,14 +57,12 @@ export default function Navbar() {
 
           {/* Right Menu Icons */}
           <div className="hidden md:flex items-center gap-4">
-            {/* Search Toggle */}
             <Link href="/produk" className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </Link>
 
-            {/* Dark Mode Toggle */}
             <button onClick={toggleDarkMode} className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
               {darkMode ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,7 +75,6 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* User Dropdown */}
             <div className="relative">
               <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
                 <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold">U</div>
@@ -94,7 +90,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile hamburger menu */}
           <div className="flex md:hidden items-center gap-2">
             <button onClick={toggleDarkMode} className="p-2 rounded-lg text-gray-600 dark:text-gray-300">
               {darkMode ? "??" : "??"}
@@ -108,7 +103,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       {isOpen && (
         <div className="md:hidden bg-white dark:bg-[#1a2e1a] border-b border-gray-100 dark:border-[#2d4a2d] px-4 pt-2 pb-4 space-y-1">
           <Link href="/" className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Beranda</Link>
