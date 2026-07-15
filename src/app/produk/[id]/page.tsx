@@ -53,9 +53,10 @@ export default function DetailProdukPage() {
         console.error("Error fetching detail:", error);
       } else if (data) {
         setProduk(data as unknown as Produk);
-        // ponytail: Using native QR Server API without extra local generator libraries
-        const pageUrl = window.location.href;
-        setQrUrl(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(pageUrl)}`);
+        // ponytail: QR links to the story page for richer scanning experience
+        const origin = window.location.origin;
+        const storyUrl = `${origin}/produk/${id}/cerita`;
+        setQrUrl(`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(storyUrl)}`);
       }
       setLoading(false);
     }
@@ -157,17 +158,38 @@ export default function DetailProdukPage() {
             </button>
           </div>
 
-          {/* QR Code Card */}
-          <div className="card p-6 flex flex-col items-center text-center space-y-4">
-            <h4 className="font-bold text-gray-900 dark:text-white">QR Code Produk</h4>
-            {qrUrl && (
-              <div className="p-2 bg-white rounded-lg border border-gray-200">
-                <img src={qrUrl} alt="QR Code Link Produk" className="w-36 h-36" />
+          {/* QR Story Card */}
+          <div className="card overflow-hidden">
+            <div className="bg-gradient-to-br from-primary-800 to-primary-700 p-5 text-center">
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gold-400">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" />
+                </svg>
+                <h4 className="font-bold text-white text-sm">Story QR</h4>
               </div>
-            )}
-            <p className="text-xs text-gray-500">
-              Scan untuk membuka halaman produk ini secara cepat. Sangat cocok jika UMKM ikut bazar.
-            </p>
+              {qrUrl && (
+                <div className="p-2.5 bg-white rounded-xl inline-block shadow-lg">
+                  <img src={qrUrl} alt="QR Code Cerita Produk" className="w-36 h-36" />
+                </div>
+              )}
+              <p className="text-primary-200 text-[11px] mt-3 leading-relaxed">
+                Scan QR ini untuk melihat cerita lengkap di balik produk ini.
+              </p>
+            </div>
+            <div className="p-4 space-y-3">
+              <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 italic">
+                &ldquo;{produk.deskripsi}&rdquo;
+              </p>
+              <Link
+                href={`/produk/${produk.id}/cerita`}
+                className="btn-primary w-full text-center text-xs py-2.5 flex items-center justify-center gap-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                </svg>
+                Baca Cerita Produk
+              </Link>
+            </div>
           </div>
 
           {/* Maps Card */}
