@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #2E7D32;
+    --color-primary-light: #81C784;
+    --color-primary-dark: #1B5E20;
+    --color-wood: #8D6E63;
+    --color-wood-dark: #5D4037;
+    --color-gold: #F9A825;
+    --color-bg: #FEFCE8;
+    --color-surface: #FFFFFF;
+    --color-text: #1a1a1a;
+    --color-text-muted: #6b7280;
+    --color-border: #e5e7eb;
+  }
+
+  .dark {
+    --color-bg: #0f1a0f;
+    --color-surface: #1a2e1a;
+    --color-text: #f1f5f1;
+    --color-text-muted: #9ca3af;
+    --color-border: #2d4a2d;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-50 text-gray-900 dark:bg-[#0f1a0f] dark:text-gray-100 transition-colors duration-300;
+  }
+
+  ::selection {
+    @apply bg-primary-300/40 text-primary-900;
+  }
+}
+
+@layer components {
+  /* Premium Card */
+  .card {
+    @apply bg-white dark:bg-[#1a2e1a] rounded-2xl shadow-card 
+           border border-gray-100 dark:border-[#2d4a2d]
+           transition-all duration-300 ease-out
+           hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  /* Glass Card */
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/70 dark:bg-[#1a2e1a]/70 
+           rounded-2xl shadow-glass border border-white/20 dark:border-[#2d4a2d]/50;
+  }
+
+  /* Primary Button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-xl font-semibold text-white
+           bg-gradient-to-r from-primary-700 to-primary-600
+           hover:from-primary-800 hover:to-primary-700
+           active:scale-[0.98]
+           transition-all duration-200 ease-out
+           shadow-md hover:shadow-lg;
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-xl font-semibold
+           text-primary-700 dark:text-primary-300
+           bg-primary-50 dark:bg-primary-900/30
+           hover:bg-primary-100 dark:hover:bg-primary-900/50
+           border border-primary-200 dark:border-primary-800
+           active:scale-[0.98]
+           transition-all duration-200 ease-out;
+  }
+
+  /* Gold Accent Button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2
+           px-6 py-3 rounded-xl font-semibold text-wood-800
+           bg-gradient-to-r from-gold-400 to-gold-500
+           hover:from-gold-500 hover:to-gold-600
+           active:scale-[0.98]
+           transition-all duration-200 ease-out
+           shadow-md hover:shadow-lg;
+  }
+
+  /* Badge / Tag */
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 
+           text-xs font-semibold rounded-full
+           bg-primary-100 text-primary-800
+           dark:bg-primary-900/40 dark:text-primary-300;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center gap-1 px-3 py-1
+           text-xs font-semibold rounded-full
+           bg-gold-100 text-gold-900
+           dark:bg-gold-900/40 dark:text-gold-300;
+  }
+
+  /* Section Container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section Title */
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold text-gray-900 dark:text-white font-display;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 dark:text-gray-400 mt-2;
+  }
+
+  /* Input Field */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl
+           bg-white dark:bg-[#1a2e1a]
+           border border-gray-200 dark:border-[#2d4a2d]
+           text-gray-900 dark:text-gray-100
+           placeholder:text-gray-400 dark:placeholder:text-gray-500
+           focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500
+           transition-all duration-200;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply flex flex-col items-center justify-center p-6 
+           rounded-2xl bg-gradient-to-br 
+           text-white shadow-lg;
+  }
+
+  /* Skeleton Loader */
+  .skeleton {
+    @apply bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 
+           dark:from-[#2d4a2d] dark:via-[#1a2e1a] dark:to-[#2d4a2d]
+           bg-[length:200%_100%] animate-shimmer rounded-lg;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent 
+           bg-gradient-to-r from-primary-600 to-primary-400;
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent 
+           bg-gradient-to-r from-gold-600 to-gold-400;
+  }
+}

@@ -1,0 +1,57 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Desa {
+  id         Int      @id @default(autoincrement())
+  nama_desa  String
+  kecamatan  String
+  kabupaten  String
+  latitude   Decimal
+  longitude  Decimal
+  umkms      Umkm[]
+
+  @@map("desa")
+}
+
+model Umkm {
+  id         Int      @id @default(autoincrement())
+  nama       String
+  pemilik    String
+  alamat     String
+  no_hp      String
+  desa_id    Int
+  desa       Desa     @relation(fields: [desa_id], references: [id], onDelete: Cascade)
+  produks    Produk[]
+
+  @@map("umkm")
+}
+
+model Kategori {
+  id       Int      @id @default(autoincrement())
+  nama     String
+  produks  Produk[]
+
+  @@map("kategori")
+}
+
+model Produk {
+  id          Int      @id @default(autoincrement())
+  nama        String
+  harga       Decimal
+  stok        Int
+  gambar      String
+  deskripsi   String
+  kategori_id Int
+  kategori    Kategori @relation(fields: [kategori_id], references: [id], onDelete: Cascade)
+  umkm_id     Int
+  umkm        Umkm     @relation(fields: [umkm_id], references: [id], onDelete: Cascade)
+  created_at  DateTime @default(now()) @map("created_at")
+
+  @@map("produk")
+}
