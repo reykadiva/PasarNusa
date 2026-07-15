@@ -2,13 +2,18 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
+import { createClient } from "@/utils/supabase/client";
 
 export default function Navbar() {
+  const router = useRouter();
+  const supabase = createClient();
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [user, setUser] = useState<any>(null);
   const { totalItems } = useCart();
 
   useEffect(() => {
@@ -24,8 +29,22 @@ export default function Navbar() {
       document.documentElement.classList.remove("dark");
     }
 
+    const checkUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    checkUser();
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      subscription.unsubscribe();
+    };
   }, []);
 
   const toggleDarkMode = () => {
@@ -39,6 +58,18 @@ export default function Navbar() {
       setDarkMode(true);
     }
   };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    setIsProfileOpen(false);
+    setIsOpen(false);
+    router.push("/");
+    router.refresh();
+  };
+
+  const userInitial = user?.user_metadata?.display_name
+    ? user.user_metadata.display_name.charAt(0).toUpperCase()
+    : user?.email?.charAt(0).toUpperCase() || "U";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 \${isScrolled ? "bg-white/80 dark:bg-[#1a2e1a]/80 backdrop-blur-md shadow-md border-b border-gray-100 dark:border-[#2d4a2d]" : "bg-transparent"}`}>
@@ -89,19 +120,28 @@ export default function Navbar() {
               )}
             </button>
 
-            <div className="relative">
-              <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
-                <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold">U</div>
-              </button>
-              {isProfileOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#1a2e1a] border border-gray-100 dark:border-[#2d4a2d] rounded-xl shadow-lg py-1 z-50">
-                  <Link href="/profile" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20">Data Diri</Link>
-                  <Link href="/faq" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20">FAQ</Link>
-                  <hr className="my-1 border-gray-100 dark:border-[#2d4a2d]" />
-                  <button className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20">Keluar</button>
-                </div>
-              )}
-            </div>
+            {user ? (
+              <div className="relative">
+                <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold">{userInitial}</div>
+                </button>
+                {isProfileOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#1a2e1a] border border-gray-100 dark:border-[#2d4a2d] rounded-xl shadow-lg py-1 z-50">
+                    <Link href="/profile" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20">Data Diri</Link>
+                    <Link href="/faq" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20">FAQ</Link>
+                    {user.user_metadata?.role === "admin" && (
+                      <Link href="/admin" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-sm font-semibold text-gold-600 dark:text-gold-400 hover:bg-primary-50 dark:hover:bg-primary-900/20">Dashboard Admin</Link>
+                    )}
+                    <hr className="my-1 border-gray-100 dark:border-[#2d4a2d]" />
+                    <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20">Keluar</button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link href="/login" className="btn-primary text-xs py-2 px-4 rounded-xl">
+                Masuk
+              </Link>
+            )}
           </div>
 
           <div className="flex md:hidden items-center gap-2">
@@ -127,14 +167,25 @@ export default function Navbar() {
 
       {isOpen && (
         <div className="md:hidden bg-white dark:bg-[#1a2e1a] border-b border-gray-100 dark:border-[#2d4a2d] px-4 pt-2 pb-4 space-y-1">
-          <Link href="/" className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Beranda</Link>
-          <Link href="/produk" className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Produk</Link>
-          <Link href="/desa" className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Desa</Link>
-          <Link href="/umkm" className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">UMKM</Link>
+          <Link href="/" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Beranda</Link>
+          <Link href="/produk" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Produk</Link>
+          <Link href="/desa" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Desa</Link>
+          <Link href="/umkm" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">UMKM</Link>
           <hr className="my-2 border-gray-100 dark:border-[#2d4a2d]" />
-          <Link href="/profile" className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Data Diri</Link>
-          <Link href="/faq" className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">FAQ</Link>
-          <button className="w-full text-left px-3 py-2 rounded-md text-base font-semibold text-red-600">Keluar</button>
+          <Link href="/faq" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">FAQ</Link>
+          {user ? (
+            <>
+              <Link href="/profile" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Data Diri</Link>
+              {user.user_metadata?.role === "admin" && (
+                <Link href="/admin" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gold-600 dark:text-gold-400">Dashboard Admin</Link>
+              )}
+              <button onClick={handleLogout} className="w-full text-left px-3 py-2 rounded-md text-base font-semibold text-red-600">Keluar</button>
+            </>
+          ) : (
+            <Link href="/login" onClick={() => setIsOpen(false)} className="block px-3 py-2 text-center rounded-xl btn-primary text-sm">
+              Masuk
+            </Link>
+          )}
         </div>
       )}
     </nav>
