@@ -96,7 +96,7 @@ export default function DetailDesaPage() {
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <button
           onClick={() => router.back()}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-primary-950 border border-gray-200 dark:border-primary-800 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-primary-900/50 transition-colors shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary-800/40 dark:bg-primary-950/40 border border-primary-700/50 dark:border-primary-800/80 text-sm font-semibold text-primary-100 dark:text-primary-200 hover:bg-primary-800/60 dark:hover:bg-primary-900/50 transition-colors shadow-sm"
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
