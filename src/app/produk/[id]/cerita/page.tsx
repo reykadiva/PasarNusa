@@ -225,7 +225,7 @@ export default function CeritaProdukPage() {
 
   const handleHubungi = () => {
     const message = `Halo, saya tertarik dengan produk *${produk.nama}* dari PasarNusa. Apakah masih tersedia?`;
-    const waUrl = `https://wa.me/${produk.umkm.no_hp}?text=${encodeURIComponent(message)}`;
+    const waUrl = `https://wa.me/6285267900655?text=${encodeURIComponent(message)}`;
     window.open(waUrl, "_blank");
   };
 

@@ -90,9 +90,9 @@ export default function DetailProdukPage() {
   }
 
   const handleHubungiPenjual = () => {
-    // ponytail: Dynamic prefilled WhatsApp text template as simple native action
-    const message = `Halo, saya tertarik dengan produk *${produk.nama}* dari desa *${produk.umkm.desa.nama_desa}*. Apakah stok ${produk.stok} masih tersedia?`;
-    const waUrl = `https://wa.me/${produk.umkm.no_hp}?text=${encodeURIComponent(message)}`;
+    // Redirect to central admin phone number: +62 852-6790-0655
+    const message = `Halo, saya tertarik dengan produk *${produk.nama}* dari desa *${produk.umkm.desa.nama_desa}*. Apakah masih tersedia?`;
+    const waUrl = `https://wa.me/6285267900655?text=${encodeURIComponent(message)}`;
     window.open(waUrl, "_blank");
   };
 
@@ -160,11 +160,9 @@ export default function DetailProdukPage() {
                <span className="text-3xl font-extrabold text-primary-700 dark:text-primary-400">
                  {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(produk.harga)}
                </span>
-               {produk.satuan && (
-                 <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                   / {produk.satuan}
-                 </span>
-               )}
+               <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                 / {produk.satuan || "pcs"}
+               </span>
             </div>
 
             <div className="flex justify-between text-sm border-t border-b border-gray-100 dark:border-[#2d4a2d] py-3 text-gray-600 dark:text-gray-300">
@@ -190,8 +188,8 @@ export default function DetailProdukPage() {
                   harga: produk.harga,
                   gambar: produk.gambar,
                   umkmNama: produk.umkm.nama,
-                  umkmNoHp: produk.umkm.no_hp,
-                  satuan: produk.satuan,
+                  umkmNoHp: "6285267900655", // Target admin number for cart checkout
+                  satuan: produk.satuan || "pcs",
                 });
                 setAddedToCart(true);
                 setTimeout(() => setAddedToCart(false), 2000);

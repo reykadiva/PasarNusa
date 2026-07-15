@@ -286,11 +286,9 @@ export default function ProdukPage() {
                         <span className="font-bold text-primary-700 dark:text-primary-400">
                           {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(produk.harga)}
                         </span>
-                        {produk.satuan && (
-                          <span className="text-[10px] text-gray-400 font-medium">
-                            per {produk.satuan}
-                          </span>
-                        )}
+                        <span className="text-[10px] text-gray-400 font-medium">
+                          per {produk.satuan || "pcs"}
+                        </span>
                       </div>
                       <span className="text-xs text-gray-500">Stok: {produk.stok}</span>
                     </div>
