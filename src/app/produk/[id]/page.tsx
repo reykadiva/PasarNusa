@@ -48,6 +48,8 @@ export default function DetailProdukPage() {
   const [qrUrl, setQrUrl] = useState("");
   const [addedToCart, setAddedToCart] = useState(false);
   const [user, setUser] = useState<any>(null);
+  const [isBuyNowOpen, setIsBuyNowOpen] = useState(false);
+  const [buyQuantity, setBuyQuantity] = useState(1);
   const { addItem } = useCart();
 
   useEffect(() => {
@@ -109,6 +111,33 @@ export default function DetailProdukPage() {
     const message = `Halo, saya tertarik dengan produk *${produk.nama}* dari desa *${produk.umkm.desa.nama_desa}*. Apakah masih tersedia?`;
     const waUrl = `https://wa.me/6285267900655?text=${encodeURIComponent(message)}`;
     window.open(waUrl, "_blank");
+  };
+
+  const handleBuyNowClick = () => {
+    if (!user) {
+      router.push(`/login?redirect=/produk/${produk.id}`);
+      return;
+    }
+    setBuyQuantity(1);
+    setIsBuyNowOpen(true);
+  };
+
+  const handleConfirmBuyNow = () => {
+    const unitText = produk.satuan && produk.satuan !== "pcs" ? ` @${produk.satuan}` : "";
+    const totalPrice = produk.harga * buyQuantity;
+    const formattedTotal = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(totalPrice);
+    
+    const message = `Halo Admin PasarNusa, saya ingin memesan:
+
+1. ${produk.nama} (${buyQuantity}x${unitText}) = ${formattedTotal}
+
+Total: ${formattedTotal}
+
+Mohon informasi ketersediaan dan ongkos kirimnya. Terima kasih!`;
+
+    const waUrl = `https://wa.me/6285267900655?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, "_blank");
+    setIsBuyNowOpen(false);
   };
 
   // ponytail: Simple Google Maps iframe integration instead of heavy leaflet map load
@@ -201,13 +230,13 @@ export default function DetailProdukPage() {
             </div>
 
             <button
-              onClick={handleHubungiPenjual}
-              className="w-full btn-primary flex justify-center items-center gap-2"
+              onClick={handleBuyNowClick}
+              className="w-full btn-primary flex justify-center items-center gap-2 py-3"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
               </svg>
-              Hubungi Penjual
+              Beli Sekarang
             </button>
 
             <button
@@ -228,12 +257,22 @@ export default function DetailProdukPage() {
                 setAddedToCart(true);
                 setTimeout(() => setAddedToCart(false), 2000);
               }}
-              className="w-full btn-gold flex justify-center items-center gap-2"
+              className="w-full btn-gold flex justify-center items-center gap-2 py-3"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
               </svg>
               {addedToCart ? "Ditambahkan!" : "Tambah ke Keranjang"}
+            </button>
+
+            <button
+              onClick={handleHubungiPenjual}
+              className="w-full btn-secondary flex justify-center items-center gap-2 py-3"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+              </svg>
+              Hubungi Penjual
             </button>
           </div>
 
@@ -310,6 +349,86 @@ export default function DetailProdukPage() {
           </div>
         </div>
       </div>
+
+      {/* Buy Now Quantity Selector Modal */}
+      {isBuyNowOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="card w-full max-w-sm p-6 space-y-6 shadow-2xl border border-gray-100 dark:border-primary-800/40 bg-white dark:bg-[#1a2e1a] animate-scale-up">
+            <div className="flex justify-between items-start">
+              <div>
+                <h3 className="font-bold text-lg text-gray-900 dark:text-white">Jumlah Pesanan</h3>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Tentukan kuantitas produk yang ingin dibeli</p>
+              </div>
+              <button
+                onClick={() => setIsBuyNowOpen(false)}
+                className="p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-primary-950/40 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="flex items-center gap-4 bg-gray-50 dark:bg-primary-950/20 p-4 rounded-xl border border-gray-100 dark:border-primary-900/30">
+              <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0">
+                <Image src={produk.gambar} alt={produk.nama} fill className="object-cover" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <h4 className="font-bold text-sm text-gray-900 dark:text-white truncate">{produk.nama}</h4>
+                <p className="text-xs text-primary-600 dark:text-primary-400 font-semibold mt-0.5">
+                  {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(produk.harga)}
+                  <span className="text-gray-400 font-normal"> / {produk.satuan || "pcs"}</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between py-2">
+              <span className="text-sm font-medium text-gray-600 dark:text-gray-300">Pilih Jumlah</span>
+              <div className="flex items-center gap-1 bg-gray-100 dark:bg-primary-950/40 p-1.5 rounded-xl border border-gray-200 dark:border-primary-800/60">
+                <button
+                  type="button"
+                  disabled={buyQuantity <= 1}
+                  onClick={() => setBuyQuantity(buyQuantity - 1)}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-primary-900/40 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-3 h-3">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
+                  </svg>
+                </button>
+                <span className="w-10 text-center font-extrabold text-sm text-gray-800 dark:text-white">{buyQuantity}</span>
+                <button
+                  type="button"
+                  disabled={buyQuantity >= produk.stok}
+                  onClick={() => setBuyQuantity(buyQuantity + 1)}
+                  className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-primary-900/40 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-3 h-3">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-100 dark:border-primary-800/40 flex justify-between items-center">
+              <div>
+                <span className="text-xs text-gray-400">Total Harga</span>
+                <p className="text-lg font-black text-primary-700 dark:text-primary-400 mt-0.5">
+                  {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(produk.harga * buyQuantity)}
+                </p>
+              </div>
+              <button
+                onClick={handleConfirmBuyNow}
+                className="btn-primary px-6 py-2.5 rounded-xl font-bold text-sm shadow-md transition-all flex items-center gap-1.5"
+              >
+                Checkout WA
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
