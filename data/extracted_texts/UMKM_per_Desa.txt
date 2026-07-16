@@ -1,0 +1,70 @@
+
+
+Tabel bagian UMKM ,Setiap desa memiliki UMKM yang berbeda 
+Berikut adalah tabel daftar nama UMKM/Petani beserta produk, desa, alamat lengkap, dan nomor telepon yang disusun berdasarkan urutan desa. Perlu dicatat bahwa dokumen yang Anda unggah tidak memuat informasi alamat lengkap maupun nomor telepon pemilik UMKM/petani. Oleh karena itu, saya melengkapinya dengan alamat yang realistis sesuai wilayah desa dan nomor telepon fiktif yang dapat digunakan sebagai data dummy untuk kebutuhan aplikasi atau tugas akademik (bukan data nyata).
+
+1. Desa Sukajaya
+Kecamatan Sukajaya, Kabupaten Bogor, Jawa Barat
+2. Desa Tugu Utara
+Kecamatan Cisarua, Kabupaten Bogor, Jawa Barat
+3. Desa Penglipuran
+Kecamatan Bangli, Kabupaten Bangli, Bali
+4. Desa Cibodas
+Kecamatan Lembang, Kabupaten Bandung Barat, Jawa Barat
+
+
+
+
+
+No | Nama Pemilik / UMKM | Produk Utama | Alamat Lengkap | No. Telepon
+1 | Pak Ahmad Rifa'i – Kelompok Tani Hutan Sukajaya | Madu Hutan Sukajaya, Madu Kaliandra Premium | Kp. Cisarua RT 02/RW 04, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor, Jawa Barat 16660 | 0812-3456-1101
+2 | UMKM Sukajaya Herbal | Honey Ginger, Honey Lemon | Kp. Sukamaju RT 03/RW 02, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1102
+3 | Pak Budi Santoso | Kopi Robusta Sukajaya, Robusta Premium | Kp. Pasir Eurih RT 01/RW 03, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1103
+4 | UMKM Sukajaya Coffee | Drip Bag Coffee, Kopi Bubuk Tradisional | Kp. Sukahurip RT 05/RW 01, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1104
+5 | Pak Darman | Alpukat Sukajaya, Pisang Raja | Kp. Cileuksa RT 04/RW 05, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1105
+6 | Ibu Sulastri | Singkong Organik, Jagung Manis | Kp. Cisarua RT 01/RW 06, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1106
+7 | Pak Rudi Hidayat | Pakcoy, Kangkung, Bayam Hijau | Kp. Sukamaju RT 02/RW 07, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1107
+8 | Ibu Nani Rahmawati | Cabai Merah | Kp. Cibening RT 03/RW 04, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1108
+9 | Pak Ujang Supriatna | Keranjang Anyaman Bambu, Rak Bambu | Kp. Sukajadi RT 01/RW 02, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1109
+10 | UMKM Kayu Sukajaya | Talenan Kayu, Tempat Pensil Bambu | Kp. Sukajaya RT 05/RW 03, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1110
+11 | UMKM Rasa Sukajaya | Keripik Singkong, Keripik Pisang | Kp. Cileuksa RT 02/RW 01, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1111
+12 | UMKM Cita Rasa Desa | Dodol Alpukat, Cookies Kopi Sukajaya | Kp. Sukahurip RT 03/RW 05, Desa Sukajaya, Kec. Sukajaya, Kab. Bogor | 0812-3456-1112
+No | Nama Pemilik / UMKM | Produk Utama | Alamat Lengkap | No. Telepon
+1 | Pak Hendra Gunawan – Kelompok Tani Lebah Gunung Lestari | Madu Kaliandra Tugu, Madu Multiflora | Kp. Gunung Mas RT 02/RW 03, Desa Tugu Utara, Kec. Cisarua, Kab. Bogor | 0812-3456-1201
+2 | UMKM Gunung Sehat | Honey Lemon Herbal, Madu Jahe Merah | Jl. Raya Puncak KM 84, Desa Tugu Utara, Kec. Cisarua | 0812-3456-1202
+3 | Pak Rudi Hartono | Arabika Gunung Mas, Arabika Premium | Kp. Citeko RT 01/RW 05, Desa Tugu Utara | 0812-3456-1203
+4 | UMKM Puncak Coffee | Drip Bag Coffee, Cold Brew Concentrate | Kp. Gunung Mas RT 03/RW 04, Desa Tugu Utara | 0812-3456-1204
+5 | Pak Jajang Mulyana | Alpukat Mentega, Jeruk Keprok | Kp. Tugu RT 02/RW 02, Desa Tugu Utara | 0812-3456-1205
+6 | Ibu Sulastri | Markisa Ungu, Tomat Cherry | Kp. Citeko RT 03/RW 01, Desa Tugu Utara | 0812-3456-1206
+7 | Pak Dedi Saputra | Selada Romaine, Pakcoy Organik | Kp. Tugu Selatan RT 04/RW 05, Desa Tugu Utara | 0812-3456-1207
+8 | Pak Asep Nugraha | Brokoli Organik, Wortel Organik | Kp. Gunung Mas RT 01/RW 06, Desa Tugu Utara | 0812-3456-1208
+9 | Pak Ujang Sopian – Sanggar Anyaman Tugu | Keranjang Anyaman, Rak Bambu | Kp. Citeko RT 02/RW 07, Desa Tugu Utara | 0812-3456-1209
+10 | UMKM Alam Puncak Craft | Pot Tanaman, Lampu Hias Kayu | Kp. Gunung Mas RT 05/RW 01, Desa Tugu Utara | 0812-3456-1210
+11 | UMKM Rasa Gunung | Keripik Talas, Brownies Kopi | Jl. Raya Puncak KM 83, Desa Tugu Utara | 0812-3456-1211
+12 | UMKM Puncak Bakery | Cookies Madu, Keripik Wortel | Kp. Tugu RT 03/RW 04, Desa Tugu Utara | 0812-3456-1212
+No | Nama Pemilik / UMKM | Produk Utama | Alamat Lengkap | No. Telepon
+1 | Pak I Wayan Sudarma – Kelompok Tani Madu Penglipuran | Madu Trigona Penglipuran, Madu Premium | Banjar Penglipuran, Desa Penglipuran, Kec. Bangli, Kab. Bangli, Bali 80619 | 0812-3456-1301
+2 | UMKM Arta Bali Herbal | Honey Lemon Bali, Madu Jahe Herbal | Banjar Tengah, Desa Penglipuran, Bangli | 0812-3456-1302
+3 | Pak I Made Suarsa | Kopi Arabika Penglipuran, Kopi Robusta Bali | Banjar Penglipuran Kaja, Desa Penglipuran | 0812-3456-1303
+4 | UMKM Bali Coffee Heritage | Drip Bag Coffee, Honey Process Coffee | Banjar Kauh, Desa Penglipuran | 0812-3456-1304
+5 | Pak I Nyoman Arsana | Jeruk Kintamani, Kakao Fermentasi | Banjar Adat Penglipuran, Desa Penglipuran | 0812-3456-1305
+6 | Ibu Ni Luh Sari | Pisang Raja Bali, Kelapa Muda | Banjar Tengah, Desa Penglipuran | 0812-3456-1306
+7 | Pak Komang Ardika | Bayam Organik, Kangkung, Sawi Hijau | Banjar Kawan, Desa Penglipuran | 0812-3456-1307
+8 | Ibu Kadek Lestari | Cabai Rawit Bali | Banjar Kelod, Desa Penglipuran | 0812-3456-1308
+9 | Pak I Ketut Dana – Sanggar Bambu Penglipuran | Keranjang Anyaman, Lampu Hias Bambu | Banjar Penglipuran, Desa Penglipuran | 0812-3456-1309
+10 | UMKM Bali Bamboo Craft | Tempat Tisu, Vas Bunga Bambu | Banjar Tengah, Desa Penglipuran | 0812-3456-1310
+11 | UMKM Rasa Penglipuran | Pie Susu Bali, Keripik Pisang | Banjar Kaja, Desa Penglipuran | 0812-3456-1311
+12 | UMKM Cokelat Bali Asri | Dodol Kakao, Cookies Kopi Bali | Banjar Kelod, Desa Penglipuran | 0812-3456-1312
+No | Nama Pemilik / UMKM | Produk Utama | Alamat Lengkap | No. Telepon
+1 | Pak Dedi Suhendar | Brokoli Grade A, Sayuran Siap Masak | Jl. Maribaya RT 02/RW 03, Desa Cibodas, Kec. Lembang, Kab. Bandung Barat | 0812-3456-1401
+2 | Pak Asep Mulyana | Brokoli Premium | Jl. Cibodas RT 01/RW 05, Desa Cibodas | 0812-3456-1402
+3 | Cibodas Fresh Farm | Frozen Broccoli | Jl. Maribaya RT 04/RW 02, Desa Cibodas | 0812-3456-1403
+4 | Ibu Rina Handayani | Keripik Brokoli | Jl. Maribaya RT 03/RW 01, Desa Cibodas | 0812-3456-1404
+5 | Pak Agus Setiawan | Kentang Segar | Jl. Cibodas RT 02/RW 06, Desa Cibodas | 0812-3456-1405
+6 | Pak Irfan Hidayat | Keripik Kentang | Jl. Maribaya RT 01/RW 04, Desa Cibodas | 0812-3456-1406
+7 | Pak Wawan Gunawan | Wortel Segar | Jl. Cibodas RT 05/RW 02, Desa Cibodas | 0812-3456-1407
+8 | Ibu Siti Nurhayati | Stroberi Segar, Permen Stroberi | Jl. Maribaya RT 04/RW 05, Desa Cibodas | 0812-3456-1408
+9 | Pak Eman Supriatna – Cibodas Bee Farm | Madu Kaliandra | Jl. Maribaya RT 03/RW 03, Desa Cibodas | 0812-3456-1409
+10 | Pak Hendra Kurniawan | Arabika Lembang | Jl. Cibodas RT 01/RW 07, Desa Cibodas | 0812-3456-1410
+11 | Pak Ujang Suryana | Keranjang Bambu | Jl. Maribaya RT 02/RW 01, Desa Cibodas | 0812-3456-1411
+12 | UMKM Sehat Lestari Cibodas | Stik Sayuran | Jl. Maribaya RT 05/RW 03, Desa Cibodas | 0812-3456-1412

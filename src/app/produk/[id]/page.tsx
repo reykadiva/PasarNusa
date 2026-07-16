@@ -16,6 +16,8 @@ interface Produk {
   gambar: string;
   deskripsi: string;
   satuan?: string;
+  keunggulan?: string;
+  cerita?: string;
   kategori: { nama: string };
   umkm: {
     id: string;
@@ -23,6 +25,7 @@ interface Produk {
     pemilik: string;
     no_hp: string;
     alamat: string;
+    sejak?: string;
     desa: {
       id: string;
       nama_desa: string;
@@ -145,11 +148,26 @@ export default function DetailProdukPage() {
             />
           </div>
 
-          <div className="card p-6">
-            <h3 className="font-bold text-xl mb-4 text-gray-900 dark:text-white">Deskripsi Produk</h3>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
-              {produk.deskripsi}
-            </p>
+          <div className="card p-6 space-y-4">
+            <div>
+              <h3 className="font-bold text-xl mb-3 text-gray-900 dark:text-white">Deskripsi Produk</h3>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line text-sm">
+                {produk.deskripsi}
+              </p>
+            </div>
+            {produk.keunggulan && (
+              <div className="pt-4 border-t border-gray-100 dark:border-[#2d4a2d]">
+                <h4 className="font-bold text-sm mb-2 text-gray-900 dark:text-white flex items-center gap-1.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 text-gold-500">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                  Keunggulan Produk
+                </h4>
+                <p className="text-gray-600 dark:text-gray-400 text-sm italic">
+                  {produk.keunggulan}
+                </p>
+              </div>
+            )}
           </div>
         </div>
 

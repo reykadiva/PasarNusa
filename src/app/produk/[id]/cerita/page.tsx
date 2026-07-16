@@ -17,6 +17,9 @@ interface Produk {
   stok: number;
   gambar: string;
   deskripsi: string;
+  satuan?: string;
+  keunggulan?: string;
+  cerita?: string;
   kategori: { nama: string };
   umkm: {
     id: string;
@@ -24,6 +27,7 @@ interface Produk {
     pemilik: string;
     no_hp: string;
     alamat: string;
+    sejak?: string;
     desa: {
       id: string;
       nama_desa: string;
@@ -181,21 +185,6 @@ export default function CeritaProdukPage() {
         setProduk(produkData as unknown as Produk);
       }
 
-      // Try to fetch cerita_produk (gracefully handle if table doesn't exist)
-      try {
-        const { data: ceritaData } = await supabase
-          .from("cerita_produk")
-          .select("*")
-          .eq("produk_id", id)
-          .single();
-
-        if (ceritaData) {
-          setCerita(ceritaData as unknown as CeritaProduk);
-        }
-      } catch {
-        // Table may not exist yet - that's fine
-      }
-
       setLoading(false);
     }
 
@@ -224,10 +213,11 @@ export default function CeritaProdukPage() {
     );
   }
 
-  const storyText = cerita?.cerita || produk.deskripsi;
-  const manfaatList = parseList(cerita?.manfaat);
-  const sumberList = parseList(cerita?.sumber_nektar);
-  const galeriList = parseList(cerita?.galeri);
+  const storyText = produk.cerita || produk.deskripsi;
+  // Parse keunggulan into a list of points
+  const manfaatList = parseList(produk.keunggulan);
+  const sumberList = [] as string[];
+  const galeriList = [] as string[];
   const kategori = produk.kategori?.nama || "";
 
   const handleHubungi = () => {
@@ -537,11 +527,11 @@ export default function CeritaProdukPage() {
               )}
               <div>
                 <h3 className="text-white font-bold text-lg">
-                  {cerita?.petani_nama || cerita?.pengrajin || produk.umkm.pemilik}
+                  {produk.umkm.pemilik}
                 </h3>
                 <p className="text-primary-300 text-sm">{produk.umkm.nama}</p>
                 <p className="text-gold-400 text-xs font-semibold mt-1">
-                  Usaha sejak {cerita?.petani_sejak || "2015"}
+                  Usaha sejak {produk.umkm.sejak || "2015"}
                 </p>
               </div>
             </div>
