@@ -126,7 +126,7 @@ function LoginForm() {
           PasarNusa
         </Link>
         <h2 className="text-xl font-bold text-gray-900 dark:text-white">Masuk ke Akun Anda</h2>
-        <p className="text-xs text-gray-500">Silakan gunakan akun demo atau email Anda</p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">Silakan gunakan akun demo atau email Anda</p>
       </div>
 
       {errorMsg && (
@@ -155,20 +155,20 @@ function LoginForm() {
 
       <form onSubmit={handleLogin} className="space-y-4">
         <div>
-          <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase tracking-wider">Email</label>
+          <label className="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1 uppercase tracking-wider">Email</label>
           <input
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="nama@email.com"
-            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-primary-800 bg-white dark:bg-primary-950/40 text-gray-950 dark:text-white focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-sm"
+            className="input-field text-sm py-2.5"
           />
         </div>
 
         <div>
           <div className="flex justify-between items-center mb-1">
-            <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Password</label>
+            <label className="block text-xs font-bold text-gray-700 dark:text-gray-200 uppercase tracking-wider">Password</label>
           </div>
           <input
             type="password"
@@ -176,7 +176,7 @@ function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
-            className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-primary-800 bg-white dark:bg-primary-950/40 text-gray-950 dark:text-white focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-sm"
+            className="input-field text-sm py-2.5"
           />
         </div>
 
@@ -191,7 +191,7 @@ function LoginForm() {
 
       <div className="relative flex items-center justify-center my-4">
         <div className="absolute inset-x-0 h-px bg-gray-200 dark:bg-primary-800/40"></div>
-        <span className="relative px-3 text-[10px] uppercase font-bold text-gray-400 bg-white dark:bg-[#111e11]">
+        <span className="relative px-3 text-[10px] uppercase font-bold text-gray-400 dark:text-gray-500 bg-white dark:bg-[#1a2e1a]">
           Atau Demo Akses Cepat
         </span>
       </div>
@@ -205,7 +205,7 @@ function LoginForm() {
           className="btn-secondary py-2.5 text-xs font-bold flex flex-col items-center justify-center gap-1 hover:border-primary-600/50"
         >
           <span className="text-gray-900 dark:text-white">Akun User</span>
-          <span className="text-[9px] text-gray-400 font-normal">user@pasarnusa.com</span>
+          <span className="text-[9px] text-gray-500 dark:text-gray-400 font-normal">user@pasarnusa.com</span>
         </button>
 
         <button
@@ -215,7 +215,7 @@ function LoginForm() {
           className="btn-gold py-2.5 text-xs font-bold flex flex-col items-center justify-center gap-1 hover:border-gold-600/50"
         >
           <span className="text-wood-950">Akun Admin</span>
-          <span className="text-[9px] text-wood-700/80 font-normal">admin@pasarnusa.com</span>
+          <span className="text-[9px] text-wood-700 font-normal">admin@pasarnusa.com</span>
         </button>
       </div>
     </div>

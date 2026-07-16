@@ -113,54 +113,54 @@ export default function ProfilePage() {
         </div>
 
         {successMsg && (
-          <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900 text-green-600 dark:text-green-400 p-3.5 rounded-xl text-xs font-semibold">
-            🎉 {successMsg}
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 p-3.5 rounded-xl text-xs font-semibold">
+            {successMsg}
           </div>
         )}
 
         <form onSubmit={handleUpdate} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase tracking-wider">Nama Lengkap</label>
+              <label className="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1 uppercase tracking-wider">Nama Lengkap</label>
               <input
                 type="text"
                 required
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-primary-800 bg-white dark:bg-primary-950/40 text-gray-950 dark:text-white focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-sm"
+                className="input-field text-sm py-2.5"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase tracking-wider">Email (Akun)</label>
+              <label className="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1 uppercase tracking-wider">Email (Akun)</label>
               <input
                 type="email"
                 disabled
                 value={user?.email || ""}
-                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-primary-800 bg-gray-50 dark:bg-primary-950/20 text-gray-400 dark:text-gray-500 cursor-not-allowed text-sm"
+                className="input-field text-sm py-2.5 opacity-50 cursor-not-allowed"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase tracking-wider">Nomor Telepon</label>
+            <label className="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1 uppercase tracking-wider">Nomor Telepon</label>
             <input
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Contoh: 08123456789"
-              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-primary-800 bg-white dark:bg-primary-950/40 text-gray-950 dark:text-white focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-sm"
+              className="input-field text-sm py-2.5"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-gray-700 dark:text-gray-300 mb-1 uppercase tracking-wider">Alamat Pengiriman</label>
+            <label className="block text-xs font-bold text-gray-700 dark:text-gray-200 mb-1 uppercase tracking-wider">Alamat Pengiriman</label>
             <textarea
               rows={3}
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="Tuliskan alamat lengkap pengiriman produk..."
-              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-primary-800 bg-white dark:bg-primary-950/40 text-gray-950 dark:text-white focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all text-sm resize-none"
+              className="input-field text-sm py-2.5 resize-none"
             />
           </div>
 

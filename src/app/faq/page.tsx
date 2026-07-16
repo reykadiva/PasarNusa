@@ -52,7 +52,7 @@ export default function FAQPage() {
           </svg>
           Kembali
         </button>
-        <div className="text-sm text-gray-500">
+        <div className="text-sm text-gray-500 dark:text-gray-400">
           <Link href="/" className="hover:underline">Beranda</Link> &gt;{" "}
           <span className="text-gray-900 dark:text-white font-semibold">FAQ</span>
         </div>
