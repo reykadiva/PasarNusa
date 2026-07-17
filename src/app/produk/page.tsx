@@ -300,11 +300,11 @@ export default function ProdukPage() {
 
           {/* Server-side Pagination Controls */}
           {totalPages > 1 && (
-            <div className="flex flex-wrap justify-center items-center gap-1.5 mt-12 bg-white dark:bg-[#1a2e1a] p-3 rounded-2xl border border-gray-100 dark:border-[#2d4a2d] max-w-full overflow-x-auto shadow-sm">
+            <div className="flex flex-wrap justify-center items-center gap-1.5 mt-12 bg-white dark:bg-[#1a2e1a] p-3 rounded-2xl border border-gray-200 dark:border-[#2d4a2d] max-w-full overflow-x-auto shadow-sm">
               <button
                 disabled={currentPage === 1}
                 onClick={() => { setCurrentPage(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                className="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 dark:bg-[#254625] text-gray-700 dark:text-gray-200 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-200 dark:hover:bg-[#325e32] transition-colors"
                 title="Halaman Pertama"
               >
                 &laquo;
@@ -312,7 +312,7 @@ export default function ProdukPage() {
               <button
                 disabled={currentPage === 1}
                 onClick={() => { setCurrentPage((prev) => prev - 1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 dark:bg-[#254625] text-gray-700 dark:text-gray-200 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-200 dark:hover:bg-[#325e32] transition-colors"
               >
                 Sebelumnya
               </button>
@@ -322,11 +322,11 @@ export default function ProdukPage() {
                 <>
                   <button
                     onClick={() => { setCurrentPage(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                    className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                    className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 dark:bg-[#254625] text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-[#325e32] transition-colors"
                   >
                     1
                   </button>
-                  <span className="text-gray-400 dark:text-gray-600 px-1 text-xs">...</span>
+                  <span className="text-gray-400 dark:text-gray-300 px-1 text-xs font-bold">...</span>
                 </>
               )}
 
@@ -354,7 +354,7 @@ export default function ProdukPage() {
                     className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                       currentPage === page
                         ? "bg-primary-600 text-white shadow-md shadow-primary-500/20"
-                        : "bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/40"
+                        : "bg-gray-100 dark:bg-[#254625] text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-[#325e32]"
                     }`}
                   >
                     {page}
@@ -365,10 +365,10 @@ export default function ProdukPage() {
               {/* Last Page if far */}
               {currentPage < totalPages - 2 && totalPages > 5 && (
                 <>
-                  <span className="text-gray-400 dark:text-gray-600 px-1 text-xs">...</span>
+                  <span className="text-gray-400 dark:text-gray-300 px-1 text-xs font-bold">...</span>
                   <button
                     onClick={() => { setCurrentPage(totalPages); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                    className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                    className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 dark:bg-[#254625] text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-[#325e32] transition-colors"
                   >
                     {totalPages}
                   </button>
@@ -378,14 +378,14 @@ export default function ProdukPage() {
               <button
                 disabled={currentPage === totalPages}
                 onClick={() => { setCurrentPage((prev) => prev + 1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 dark:bg-[#254625] text-gray-700 dark:text-gray-200 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-200 dark:hover:bg-[#325e32] transition-colors"
               >
                 Berikutnya
               </button>
               <button
                 disabled={currentPage === totalPages}
                 onClick={() => { setCurrentPage(totalPages); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                className="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 dark:bg-[#254625] text-gray-700 dark:text-gray-200 disabled:opacity-30 disabled:pointer-events-none hover:bg-gray-200 dark:hover:bg-[#325e32] transition-colors"
                 title="Halaman Terakhir"
               >
                 &raquo;
