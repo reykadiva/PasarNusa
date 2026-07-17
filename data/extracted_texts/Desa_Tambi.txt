@@ -1,0 +1,73 @@
+🍵 DATASET DESA TAMBI
+📍 Informasi Desa
+
+🍃 KATEGORI TEH
+
+🍯 KATEGORI MADU & HERBAL
+
+🍪 KATEGORI SNACK
+
+🎁 KATEGORI OLEH-OLEH KHAS WONOSOBO
+
+🧺 KATEGORI KERAJINAN
+
+
+
+Data | Keterangan
+Nama Desa | Tambi
+Kabupaten | Wonosobo
+Provinsi | Jawa Tengah
+Ketinggian | ±1.200–1.800 mdpl
+Suhu | 15–22°C
+Produk Utama | Teh Hijau, Teh Hitam, Teh Premium
+Jumlah UMKM | 17
+Jumlah Produk | ±115
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Teh Hijau Premium | Rp45.000 | 200 gr | 150 | ⭐4.9 | Best Seller | Tambi Tea
+2 | Teh Hitam Premium | Rp48.000 | 200 gr | 140 | ⭐4.9 | Premium | Tambi Tea
+3 | Teh Putih | Rp75.000 | 100 gr | 60 | ⭐5.0 | Limited | Tambi Tea
+4 | Teh Oolong | Rp68.000 | 150 gr | 75 | ⭐4.9 | Premium | Tambi Tea
+5 | Teh Melati | Rp42.000 | 200 gr | 120 | ⭐4.8 | Favorit | Wonosobo Tea
+6 | Teh Rosella | Rp48.000 | 200 gr | 90 | ⭐4.8 | Herbal | Wonosobo Tea
+7 | Teh Jahe | Rp45.000 | 200 gr | 100 | ⭐4.8 | Organik | Tambi Herbal
+8 | Teh Lemon | Rp40.000 | 200 gr | 85 | ⭐4.7 | Fresh | Tambi Herbal
+9 | Teh Serai | Rp44.000 | 200 gr | 80 | ⭐4.8 | Herbal | Tambi Herbal
+10 | Matcha Lokal Tambi | Rp78.000 | 100 gr | 55 | ⭐4.9 | Premium | Tambi Tea
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Madu Hutan Tambi | Rp98.000 | 500 ml | 75 | ⭐4.9 | Best Seller | Madu Tambi
+2 | Madu Multiflora | Rp95.000 | 500 ml | 70 | ⭐4.8 | Organik | Madu Tambi
+3 | Madu Kaliandra | Rp110.000 | 500 ml | 50 | ⭐4.9 | Premium | Madu Tambi
+4 | Wedang Jahe Instan | Rp30.000 | 250 gr | 120 | ⭐4.8 | Herbal | Tambi Herbal
+5 | Wedang Uwuh | Rp35.000 | 250 gr | 95 | ⭐4.8 | Tradisional | Tambi Herbal
+6 | Sirup Jahe | Rp42.000 | 500 ml | 65 | ⭐4.7 | Baru | Tambi Herbal
+7 | Permen Jahe | Rp20.000 | 150 gr | 140 | ⭐4.7 | Favorit | Tambi Herbal
+8 | Serbuk Jahe Merah | Rp38.000 | 250 gr | 80 | ⭐4.8 | Organik | Tambi Herbal
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Cookies Teh Hijau | Rp30.000 | 250 gr | 85 | ⭐4.8 | Favorit | Dapur Tambi
+2 | Brownies Matcha | Rp55.000 | 450 gr | 70 | ⭐4.9 | Best Seller | Dapur Tambi
+3 | Keripik Kentang Wonosobo | Rp28.000 | 200 gr | 120 | ⭐4.8 | Fresh | Camilan Tambi
+4 | Keripik Singkong Balado | Rp22.000 | 200 gr | 100 | ⭐4.7 | Favorit | Camilan Tambi
+5 | Keripik Jamur | Rp30.000 | 180 gr | 75 | ⭐4.9 | Premium | Camilan Tambi
+6 | Stik Keju | Rp32.000 | 200 gr | 90 | ⭐4.8 | Baru | Dapur Tambi
+7 | Kacang Bawang | Rp25.000 | 250 gr | 110 | ⭐4.7 | Fresh | Camilan Tambi
+8 | Rengginang Gurih | Rp24.000 | 250 gr | 95 | ⭐4.8 | Tradisional | UMKM Tambi
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Manisan Carica | Rp35.000 | 500 gr | 120 | ⭐4.9 | Best Seller | Carica Tambi
+2 | Sirup Carica | Rp42.000 | 600 ml | 90 | ⭐4.8 | Favorit | Carica Tambi
+3 | Dodol Carica | Rp30.000 | 300 gr | 80 | ⭐4.8 | Oleh-Oleh | Carica Tambi
+4 | Purwaceng Instan | Rp55.000 | 200 gr | 60 | ⭐4.9 | Herbal | Tambi Herbal
+5 | Purwaceng Premium | Rp78.000 | 250 gr | 45 | ⭐5.0 | Premium | Tambi Herbal
+6 | Mie Ongklok Instan | Rp28.000 | 2 porsi | 100 | ⭐4.8 | Tradisional | Rasa Wonosobo
+7 | Kopi Purwaceng | Rp48.000 | 200 gr | 70 | ⭐4.7 | Baru | Tambi Herbal
+8 | Gula Aren Wonosobo | Rp35.000 | 500 gr | 95 | ⭐4.8 | Organik | Aren Tambi
+9 | Hampers Teh Tambi | Rp185.000 | 1 kg | 25 | ⭐5.0 | Gift Box | Tambi Tea
+10 | Gift Box Carica & Teh | Rp165.000 | 900 gr | 30 | ⭐4.9 | Souvenir | Carica Tambi
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Cangkir Keramik Tambi | Rp48.000 | 1 pcs | 55 | ⭐4.8 | Souvenir | Kriya Tambi
+2 | Tatakan Gelas Kayu | Rp35.000 | 1 set | 70 | ⭐4.8 | Handmade | Kriya Tambi
+3 | Keranjang Anyaman Bambu | Rp85.000 | 1 pcs | 40 | ⭐4.9 | Handmade | Kriya Tambi
+4 | Tote Bag Motif Teh | Rp68.000 | 1 pcs | 50 | ⭐4.8 | Souvenir | Kriya Tambi
+5 | Topi Rajut | Rp55.000 | 1 pcs | 45 | ⭐4.7 | Handmade | Rajut Tambi
+6 | Syal Rajut | Rp72.000 | 1 pcs | 35 | ⭐4.9 | Premium | Rajut Tambi
+7 | Miniatur Kebun Teh | Rp65.000 | 1 pcs | 30 | ⭐4.8 | Souvenir | Kriya Tambi
+8 | Gantungan Kunci Daun Teh | Rp18.000 | 1 pcs | 120 | ⭐4.7 | Souvenir | Kriya Tambi

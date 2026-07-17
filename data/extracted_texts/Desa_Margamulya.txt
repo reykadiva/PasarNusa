@@ -1,0 +1,67 @@
+☕ DATASET DESA MARGAMULYA
+📍 Informasi Desa
+
+☕ KATEGORI KOPI
+
+🍃 KATEGORI TEH
+
+🍯 KATEGORI MADU
+
+🥨 KATEGORI SNACK
+
+🎁 KATEGORI OLEH-OLEH
+
+
+Data | Keterangan
+Nama Desa | Margamulya
+Kabupaten | Bandung
+Provinsi | Jawa Barat
+Ketinggian | ±1.000–1.400 mdpl
+Suhu | 18–24°C
+Produk Utama | Kopi Arabika, Teh, Madu
+Jumlah UMKM | 18
+Jumlah Produk | ±120
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Kopi Arabika Premium | Rp85.000 | 250 gr | 120 | ⭐4.9 | Best Seller | Kopi Lereng Margamulya
+2 | Kopi Arabika Natural | Rp88.000 | 250 gr | 95 | ⭐4.8 | Organik | Kopi Lereng Margamulya
+3 | Kopi Arabika Honey Process | Rp95.000 | 250 gr | 80 | ⭐4.9 | Premium | Kopi Nusantara
+4 | Kopi Arabika Full Wash | Rp90.000 | 250 gr | 75 | ⭐4.8 | Fresh Roast | Kopi Margamulya
+5 | Kopi Arabika Wine Process | Rp110.000 | 250 gr | 45 | ⭐4.9 | Limited | Kopi Margamulya
+6 | Kopi Bubuk Tradisional | Rp55.000 | 200 gr | 100 | ⭐4.7 | Favorit | UMKM Gunung Kopi
+7 | Drip Bag Coffee | Rp42.000 | 100 gr | 140 | ⭐4.8 | Baru | Gunung Kopi
+8 | Espresso Blend | Rp78.000 | 250 gr | 65 | ⭐4.8 | Premium | Gunung Kopi
+9 | Cold Brew Coffee | Rp28.000 | 250 ml | 60 | ⭐4.9 | Fresh | Kopi Lereng
+10 | Coffee Gift Box | Rp175.000 | 750 gr | 25 | ⭐5.0 | Hampers | Kopi Lereng
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Teh Hijau Premium | Rp45.000 | 200 gr | 150 | ⭐4.9 | Best Seller | Teh Sejuk
+2 | Teh Hitam Premium | Rp48.000 | 200 gr | 135 | ⭐4.8 | Premium | Teh Sejuk
+3 | Teh Melati | Rp42.000 | 200 gr | 120 | ⭐4.8 | Favorit | Margamulya Tea
+4 | Teh Lemon | Rp39.000 | 200 gr | 90 | ⭐4.7 | Fresh | Margamulya Tea
+5 | Teh Jahe | Rp42.000 | 200 gr | 95 | ⭐4.8 | Organik | Margamulya Tea
+6 | Teh Rosella | Rp48.000 | 200 gr | 75 | ⭐4.8 | Baru | Teh Sejuk
+7 | Matcha Lokal | Rp68.000 | 100 gr | 50 | ⭐4.9 | Premium | Green Tea UMKM
+8 | Teh Chamomile | Rp55.000 | 100 gr | 40 | ⭐4.8 | Herbal | Green Tea UMKM
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Madu Hutan Asli | Rp98.000 | 500 ml | 80 | ⭐4.9 | Best Seller | Madu Alam
+2 | Madu Kopi | Rp110.000 | 500 ml | 55 | ⭐4.9 | Premium | Madu Alam
+3 | Madu Multiflora | Rp95.000 | 500 ml | 70 | ⭐4.8 | Organik | Madu Alam
+4 | Madu Kaliandra | Rp120.000 | 500 ml | 40 | ⭐4.9 | Premium | Madu Lereng
+5 | Madu Hutan Premium | Rp135.000 | 500 ml | 30 | ⭐5.0 | Limited | Madu Lereng
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Cookies Kopi | Rp28.000 | 250 gr | 80 | ⭐4.8 | Favorit | Dapur Kopi
+2 | Brownies Kopi | Rp55.000 | 450 gr | 60 | ⭐4.9 | Best Seller | Dapur Kopi
+3 | Keripik Pisang | Rp22.000 | 200 gr | 120 | ⭐4.8 | Fresh | Camilan Desa
+4 | Keripik Singkong | Rp20.000 | 200 gr | 140 | ⭐4.7 | Favorit | Camilan Desa
+5 | Kacang Sangrai | Rp32.000 | 250 gr | 90 | ⭐4.8 | Baru | Camilan Desa
+6 | Stik Keju | Rp30.000 | 200 gr | 75 | ⭐4.8 | Fresh | Dapur Kopi
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Hampers Kopi Premium | Rp185.000 | 1 kg | 20 | ⭐5.0 | Gift Box | Kopi Lereng
+2 | Gift Box Arabika | Rp165.000 | 750 gr | 25 | ⭐5.0 | Hampers | Kopi Lereng
+3 | Permen Kopi | Rp22.000 | 150 gr | 130 | ⭐4.7 | Favorit | Dapur Kopi
+4 | Dodol Kopi | Rp32.000 | 300 gr | 90 | ⭐4.8 | Oleh-Oleh | Dapur Kopi
+5 | Bandrek Instan | Rp30.000 | 250 gr | 80 | ⭐4.8 | Tradisional | Rasa Sunda
+6 | Bajigur Instan | Rp32.000 | 250 gr | 75 | ⭐4.8 | Tradisional | Rasa Sunda
+7 | Gula Aren Premium | Rp35.000 | 500 gr | 110 | ⭐4.9 | Organik | Aren Lestari
+8 | Sirup Kopi | Rp45.000 | 500 ml | 55 | ⭐4.8 | Baru | Kopi Lereng
+9 | Mug Keramik Motif Kopi | Rp48.000 | 1 pcs | 40 | ⭐4.9 | Souvenir | Kriya Margamulya
+10 | Tote Bag Kopi Margamulya | Rp65.000 | 1 pcs | 35 | ⭐4.8 | Souvenir | Kriya Margamulya

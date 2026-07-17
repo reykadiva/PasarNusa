@@ -22,7 +22,7 @@ interface Produk {
   id: string;
   nama: string;
   harga: number;
-  gambar_url: string | null;
+  gambar: string | null;
   created_at: string;
   umkm: Umkm | null;
 }
@@ -71,17 +71,47 @@ const categoryIcons: Record<string, React.ReactNode> = {
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.871c1.355 0 2.697.056 4.024.166C17.155 8.51 18 9.473 18 10.608v2.513M15 8.25v-1.5m-6 1.5v-1.5m12 9.75-1.5.75a3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0 3.354 3.354 0 0 0-3 0 3.354 3.354 0 0 1-3 0L3 16.5m15-3.379a48.474 48.474 0 0 0-6-.371c-2.032 0-4.034.126-6 .371m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.169c0 .621-.504 1.125-1.125 1.125H4.125A1.125 1.125 0 0 1 3 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 0 1 6 13.12" />
     </svg>
   ),
+  Teh: (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-green-700 dark:text-green-400">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+    </svg>
+  ),
+  Cokelat: (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-amber-700 dark:text-amber-400">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+    </svg>
+  ),
+  Minuman: (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-blue-600 dark:text-blue-400">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23.693L5 14.5" />
+    </svg>
+  ),
+  "Oleh-Oleh": (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-rose-600 dark:text-rose-400">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+    </svg>
+  ),
 };
 
 const categories = [
-  "Pertanian", "Kopi", "Madu", "Kerajinan", "Sayuran", "Snack",
+  "Pertanian", "Kopi", "Madu", "Kerajinan", "Sayuran", "Snack", "Teh", "Cokelat", "Minuman", "Oleh-Oleh",
 ] as const;
 
 const desaImages = [
-  "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&auto=format&fit=crop&q=60",
-  "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=600&auto=format&fit=crop&q=60",
-  "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&auto=format&fit=crop&q=60",
-  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&auto=format&fit=crop&q=60",
+  "/images/hero/pedesaan1.jpeg",
+  "/images/hero/pedesaan2.jpeg",
+  "/images/hero/pedesaan3.jpeg",
+  "/images/hero/pedesaan4.jpeg",
+  "/images/hero/pedesaan1.jpeg",
+  "/images/hero/pedesaan2.jpeg",
+  "/images/hero/pedesaan3.jpeg",
+  "/images/hero/pedesaan4.jpeg",
+];
+
+const heroBackgrounds = [
+  "/images/hero/pedesaan1.jpeg",
+  "/images/hero/pedesaan2.jpeg",
+  "/images/hero/pedesaan3.jpeg",
 ];
 
 const priceFormatter = new Intl.NumberFormat("id-ID", {
@@ -112,83 +142,108 @@ export default async function Home() {
   const { data: desaData } = await supabase
     .from("desa")
     .select("*, umkm(count)")
-    .limit(4);
+    .limit(8);
 
   const desaList = (desaData ?? []) as unknown as DesaWithCount[];
 
   return (
     <main className="min-h-screen">
       {/* ============================================================ */}
-      {/*  1 · Hero Section                                            */}
+      {/*  1 · Hero Section — Full BG Pedesaan + Glassmorphism          */}
       {/* ============================================================ */}
-      <section className="relative overflow-hidden bg-hero-pattern">
-        {/* Decorative circles */}
-        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-primary-400/10 blur-3xl" />
-        <div className="absolute -bottom-32 -left-32 h-[500px] w-[500px] rounded-full bg-gold-400/10 blur-3xl" />
+      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+        {/* Full-screen countryside background */}
+        <Image
+          src="/images/hero/pedesaan3.jpeg"
+          alt="Pemandangan pedesaan Indonesia"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
 
-        <div className="section-container relative z-10 flex flex-col items-center gap-12 py-20 md:py-28 lg:flex-row lg:gap-16">
-          {/* Left — copy */}
-          <div className="flex-1 text-center lg:text-left animate-fade-in-up">
-            <h1 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-              Belanja Lokal,
-              <br />
-              <span className="text-gradient-gold bg-clip-text text-transparent bg-gradient-to-r from-gold-300 to-gold-500">
-                Bangun Desa.
-              </span>
-            </h1>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60" />
 
-            <p className="mt-6 max-w-lg text-lg text-primary-100/90 mx-auto lg:mx-0">
-              Temukan produk terbaik dari UMKM dan desa di seluruh Indonesia.
-            </p>
+        {/* Decorative light blurs */}
+        <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-primary-400/15 blur-[100px]" />
+        <div className="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-gold-400/10 blur-[120px]" />
 
-            {/* Search bar */}
-            <div className="mt-8 flex max-w-xl mx-auto lg:mx-0">
-              <div className="relative flex w-full items-center overflow-hidden rounded-full bg-white shadow-lg">
-                <input
-                  type="text"
-                  placeholder="Cari produk, desa, atau UMKM..."
-                  className="w-full border-0 bg-transparent py-4 pl-6 pr-4 text-gray-700 placeholder:text-gray-400 focus:outline-none"
-                />
-                <button
-                  type="button"
-                  className="mr-2 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-600 text-white transition-colors hover:bg-primary-700"
-                  aria-label="Cari"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
+        {/* Glass panel content */}
+        <div className="section-container relative z-10 w-full py-16 md:py-24">
+          <div className="mx-auto max-w-2xl animate-fade-in-up">
+            {/* Liquid Glass Panel — iOS-inspired */}
+            <div
+              className="rounded-3xl border border-white/20 p-8 sm:p-10 md:p-12"
+              style={{
+                background: "rgba(255,255,255,0.08)",
+                backdropFilter: "blur(24px) saturate(180%)",
+                WebkitBackdropFilter: "blur(24px) saturate(180%)",
+                boxShadow:
+                  "0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(255,255,255,0.05)",
+              }}
+            >
+              {/* Tag */}
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white/90">
+                <span className="inline-block h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+                Marketplace Desa Nusantara
+              </div>
+
+              <h1 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                Belanja Lokal,
+                <br />
+                <span className="bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 bg-clip-text text-transparent">
+                  Bangun Desa.
+                </span>
+              </h1>
+
+              <p className="mt-5 max-w-lg text-lg leading-relaxed text-white/80">
+                Temukan produk terbaik dari UMKM dan desa di seluruh Indonesia. Langsung dari petani, langsung ke rumah Anda.
+              </p>
+
+              {/* Search bar inside glass */}
+              <div className="mt-8">
+                <div className="relative flex w-full items-center overflow-hidden rounded-2xl bg-white/95 shadow-xl ring-1 ring-white/30">
+                  <input
+                    type="text"
+                    placeholder="Cari produk, desa, atau UMKM..."
+                    className="w-full border-0 bg-transparent py-4 pl-6 pr-4 text-gray-700 placeholder:text-gray-400 focus:outline-none"
+                  />
+                  <button
+                    type="button"
+                    className="mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-600 text-white transition-all hover:bg-primary-700 hover:scale-105"
+                    aria-label="Cari"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.5 10.5a7.5 7.5 0 0013.15 6.15z"
-                    />
-                  </svg>
-                </button>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.5 10.5a7.5 7.5 0 0013.15 6.15z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              {/* Stats row */}
+              <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-white/70">
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-white">8</span>
+                  <span>Desa<br/>Mitra</span>
+                </div>
+                <div className="h-8 w-px bg-white/20" />
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-white">126+</span>
+                  <span>UMKM<br/>Terdaftar</span>
+                </div>
+                <div className="h-8 w-px bg-white/20" />
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-white">290+</span>
+                  <span>Produk<br/>Lokal</span>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Right — hero image */}
-          <div className="flex-1 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <div className="relative mx-auto aspect-[4/3] w-full max-w-lg overflow-hidden rounded-2xl shadow-2xl ring-1 ring-white/10">
-              <Image
-                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&auto=format&fit=crop&q=60"
-                alt="Pemandangan sawah Indonesia"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              {/* Subtle gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent" />
-            </div>
-          </div>
         </div>
+
+        {/* Bottom gradient fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-cream-50 dark:from-[#0f1a0f] to-transparent" />
       </section>
 
       {/* ============================================================ */}
@@ -201,7 +256,7 @@ export default async function Home() {
             Jelajahi berbagai kategori produk unggulan dari desa-desa Indonesia
           </p>
 
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5">
             {categories.map((cat) => (
               <Link
                 key={cat}
@@ -282,7 +337,7 @@ export default async function Home() {
           </p>
 
           {desaList.length > 0 ? (
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {desaList.map((desa, idx) => (
                 <DesaCard
                   key={desa.id}
@@ -413,9 +468,9 @@ function ProductCard({ produk }: { produk: Produk }) {
     >
       {/* Image */}
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-primary-900/20">
-        {produk.gambar_url ? (
+        {produk.gambar ? (
           <Image
-            src={produk.gambar_url}
+            src={produk.gambar}
             alt={produk.nama}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-110"

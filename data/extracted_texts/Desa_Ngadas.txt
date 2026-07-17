@@ -1,0 +1,72 @@
+🌾 DATASET DESA NGADAS
+📍 Informasi Desa
+
+🥔 KATEGORI PERTANIAN
+
+🥬 KATEGORI SAYURAN SEGAR
+
+🥨 KATEGORI SNACK
+
+🎁 KATEGORI OLEH-OLEH
+
+🧺 KATEGORI KERAJINAN
+
+
+Data | Keterangan
+Nama Desa | Ngadas
+Kabupaten | Malang
+Provinsi | Jawa Timur
+Ketinggian | ±2.000 mdpl
+Suhu | 10–20°C
+Produk Utama | Kentang, Wortel, Kubis, Daun Bawang
+Jumlah UMKM | 16
+Jumlah Produk | ±110
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Kentang Granola Premium | Rp24.000 | 1 kg | 180 | ⭐4.9 | Best Seller | Tani Tengger
+2 | Kentang Organik | Rp28.000 | 1 kg | 120 | ⭐4.9 | Organik | Tani Tengger
+3 | Wortel Manis | Rp18.000 | 1 kg | 150 | ⭐4.8 | Fresh | Agro Ngadas
+4 | Kubis Hijau | Rp15.000 | 1 kg | 170 | ⭐4.8 | Fresh Today | Agro Ngadas
+5 | Kubis Ungu | Rp22.000 | 1 kg | 85 | ⭐4.8 | Premium | Agro Ngadas
+6 | Daun Bawang Segar | Rp16.000 | 500 gr | 130 | ⭐4.8 | Organik | Sayur Lestari
+7 | Brokoli Organik | Rp28.000 | 500 gr | 90 | ⭐4.9 | Premium | Sayur Lestari
+8 | Selada Keriting | Rp20.000 | 250 gr | 110 | ⭐4.8 | Fresh | Sayur Lestari
+9 | Pakcoy Organik | Rp18.000 | 250 gr | 120 | ⭐4.8 | Organik | Agro Ngadas
+10 | Lobak Putih | Rp15.000 | 1 kg | 80 | ⭐4.7 | Fresh | Tani Tengger
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Bayam Hijau | Rp12.000 | 250 gr | 150 | ⭐4.8 | Fresh | Sayur Lestari
+2 | Sawi Putih | Rp14.000 | 500 gr | 120 | ⭐4.8 | Organik | Agro Ngadas
+3 | Kailan Organik | Rp22.000 | 250 gr | 85 | ⭐4.8 | Premium | Sayur Lestari
+4 | Buncis Segar | Rp19.000 | 500 gr | 100 | ⭐4.8 | Fresh | Tani Makmur
+5 | Seledri | Rp10.000 | 100 gr | 150 | ⭐4.7 | Fresh | Agro Ngadas
+6 | Daun Mint | Rp15.000 | 100 gr | 75 | ⭐4.8 | Organik | Sayur Lestari
+7 | Peterseli | Rp14.000 | 100 gr | 60 | ⭐4.7 | Premium | Agro Ngadas
+8 | Cabai Rawit Hijau | Rp32.000 | 250 gr | 70 | ⭐4.8 | Fresh | Tani Tengger
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Keripik Kentang Original | Rp26.000 | 200 gr | 120 | ⭐4.9 | Best Seller | Dapur Ngadas
+2 | Keripik Kentang Balado | Rp28.000 | 200 gr | 95 | ⭐4.8 | Favorit | Dapur Ngadas
+3 | Keripik Wortel | Rp24.000 | 180 gr | 90 | ⭐4.8 | Organik | UMKM Tengger
+4 | Keripik Kubis | Rp22.000 | 180 gr | 85 | ⭐4.7 | Baru | UMKM Tengger
+5 | Stik Kentang | Rp30.000 | 250 gr | 75 | ⭐4.8 | Premium | Dapur Ngadas
+6 | Kerupuk Sayur | Rp20.000 | 200 gr | 110 | ⭐4.7 | Fresh | Dapur Ngadas
+7 | Kacang Bawang | Rp24.000 | 250 gr | 100 | ⭐4.8 | Favorit | Cemilan Tengger
+8 | Keripik Jamur | Rp29.000 | 180 gr | 80 | ⭐4.9 | Premium | Cemilan Tengger
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Keripik Apel Malang | Rp28.000 | 200 gr | 120 | ⭐4.9 | Best Seller | Oleh-Oleh Bromo
+2 | Sari Apel | Rp35.000 | 500 ml | 90 | ⭐4.8 | Favorit | Oleh-Oleh Bromo
+3 | Pia Mangkok | Rp42.000 | 10 pcs | 75 | ⭐4.9 | Premium | Rasa Malang
+4 | Apel Manalagi | Rp38.000 | 1 kg | 85 | ⭐4.8 | Fresh | Agro Ngadas
+5 | Jenang Apel | Rp32.000 | 300 gr | 60 | ⭐4.7 | Tradisional | Rasa Malang
+6 | Sambal Bawang Tengger | Rp30.000 | 250 gr | 100 | ⭐4.8 | Pedas Favorit | Dapur Ngadas
+7 | Abon Jamur | Rp42.000 | 200 gr | 70 | ⭐4.8 | Organik | UMKM Tengger
+8 | Teh Herbal Pegunungan | Rp38.000 | 200 gr | 55 | ⭐4.9 | Herbal | Sehat Alam
+9 | Wedang Jahe Instan | Rp28.000 | 250 gr | 80 | ⭐4.8 | Hangat | Sehat Alam
+10 | Permen Jahe | Rp18.000 | 150 gr | 110 | ⭐4.7 | Tradisional | Sehat Alam
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Tas Anyaman Bambu | Rp95.000 | 1 pcs | 30 | ⭐4.9 | Handmade | Kriya Tengger
+2 | Keranjang Bambu | Rp85.000 | 1 pcs | 35 | ⭐4.8 | Handmade | Kriya Tengger
+3 | Tatakan Gelas Kayu | Rp35.000 | 1 set | 60 | ⭐4.8 | Souvenir | Kriya Tengger
+4 | Gantungan Kunci Bromo | Rp15.000 | 1 pcs | 120 | ⭐4.7 | Souvenir | Kriya Tengger
+5 | Miniatur Gunung Bromo | Rp65.000 | 1 pcs | 40 | ⭐4.9 | Best Seller | Kriya Tengger
+6 | Mug Motif Tengger | Rp48.000 | 1 pcs | 55 | ⭐4.8 | Souvenir | Kriya Tengger
+7 | Topi Rajut Handmade | Rp55.000 | 1 pcs | 45 | ⭐4.8 | Handmade | Rajut Ngadas
+8 | Syal Rajut | Rp68.000 | 1 pcs | 35 | ⭐4.9 | Premium | Rajut Ngadas

@@ -1,0 +1,72 @@
+
+🍫 DATASET DESA WISATA NGLANGGERAN
+📍 Informasi Desa
+
+🍫 KATEGORI COKELAT & KAKAO
+
+🍪 KATEGORI SNACK
+
+🍹 KATEGORI MINUMAN
+
+🎁 KATEGORI OLEH-OLEH KHAS
+
+🧺 KATEGORI KERAJINAN
+
+
+
+Data | Keterangan
+Nama Desa | Desa Wisata Nglanggeran
+Kabupaten | Gunungkidul
+Provinsi | Daerah Istimewa Yogyakarta
+Ketinggian | ±200–700 mdpl
+Suhu | 23–30°C
+Produk Utama | Kakao, Cokelat, Kerajinan, Oleh-Oleh
+Jumlah UMKM | 20
+Jumlah Produk | ±120
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Cokelat Batang Original | Rp38.000 | 100 gr | 120 | ⭐4.9 | Best Seller | Griya Cokelat
+2 | Dark Chocolate 70% | Rp45.000 | 100 gr | 90 | ⭐4.9 | Premium | Griya Cokelat
+3 | Milk Chocolate | Rp40.000 | 100 gr | 100 | ⭐4.8 | Favorit | Griya Cokelat
+4 | White Chocolate | Rp42.000 | 100 gr | 70 | ⭐4.8 | Premium | Griya Cokelat
+5 | Almond Chocolate Bar | Rp52.000 | 120 gr | 60 | ⭐4.9 | Premium | Kakao Purbarasa
+6 | Cashew Chocolate | Rp50.000 | 120 gr | 55 | ⭐4.8 | Baru | Kakao Purbarasa
+7 | Chocolate Spread | Rp48.000 | 250 gr | 65 | ⭐4.8 | Favorit | Kakao Purbarasa
+8 | Cokelat Bubuk Premium | Rp36.000 | 200 gr | 95 | ⭐4.8 | Organik | Griya Cokelat
+9 | Minuman Cokelat Instan | Rp32.000 | 200 gr | 120 | ⭐4.8 | Best Seller | Griya Cokelat
+10 | Kakao Fermentasi | Rp65.000 | 500 gr | 40 | ⭐4.9 | Premium | Kakao Nglanggeran
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Cookies Cokelat | Rp28.000 | 250 gr | 120 | ⭐4.8 | Best Seller | Purbarasa
+2 | Brownies Cokelat | Rp55.000 | 450 gr | 80 | ⭐4.9 | Favorit | Purbarasa
+3 | Dodol Kakao | Rp32.000 | 300 gr | 100 | ⭐4.9 | Produk Khas | Purbarasa
+4 | Choco Stick | Rp25.000 | 150 gr | 130 | ⭐4.7 | Baru | Dapur Kakao
+5 | Wafer Cokelat | Rp24.000 | 200 gr | 95 | ⭐4.7 | Favorit | Dapur Kakao
+6 | Keripik Singkong | Rp22.000 | 200 gr | 120 | ⭐4.8 | Tradisional | Nglanggeran Snack
+7 | Keripik Pisang | Rp24.000 | 200 gr | 110 | ⭐4.8 | Fresh | Nglanggeran Snack
+8 | Keripik Sukun | Rp25.000 | 200 gr | 90 | ⭐4.8 | Tradisional | Nglanggeran Snack
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Chocomix | Rp30.000 | 200 gr | 120 | ⭐4.8 | Best Seller | Griya Cokelat
+2 | Cokelat Panas Premium | Rp38.000 | 250 gr | 90 | ⭐4.9 | Premium | Griya Cokelat
+3 | Sirup Kakao | Rp45.000 | 500 ml | 70 | ⭐4.8 | Favorit | Kakao Purbarasa
+4 | Kopi Kakao Blend | Rp48.000 | 250 gr | 65 | ⭐4.8 | Baru | Dapur Kakao
+5 | Wedang Jahe Cokelat | Rp35.000 | 250 gr | 80 | ⭐4.8 | Herbal | Dapur Kakao
+6 | Susu Cokelat Bubuk | Rp34.000 | 250 gr | 90 | ⭐4.8 | Favorit | Griya Cokelat
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Hampers Cokelat Premium | Rp185.000 | 1 kg | 20 | ⭐5.0 | Gift Box | Griya Cokelat
+2 | Gift Box Kakao | Rp165.000 | 900 gr | 25 | ⭐5.0 | Premium | Griya Cokelat
+3 | Geplak Cokelat | Rp28.000 | 300 gr | 90 | ⭐4.8 | Oleh-Oleh | Purbarasa
+4 | Bakpia Cokelat | Rp45.000 | 10 pcs | 75 | ⭐4.9 | Favorit | Rasa Jogja
+5 | Pathilo Gunungkidul | Rp25.000 | 250 gr | 100 | ⭐4.8 | Tradisional | Rasa Jogja
+6 | Thiwul Instan | Rp30.000 | 500 gr | 80 | ⭐4.8 | Tradisional | Rasa Jogja
+7 | Emping Melinjo | Rp35.000 | 250 gr | 70 | ⭐4.7 | Organik | Nglanggeran Snack
+8 | Gula Kelapa Organik | Rp32.000 | 500 gr | 90 | ⭐4.8 | Organik | Alam Nglanggeran
+9 | Sambal Bawang Gunungkidul | Rp30.000 | 250 gr | 100 | ⭐4.8 | Pedas Favorit | Dapur Kakao
+10 | Permen Kakao | Rp20.000 | 150 gr | 120 | ⭐4.7 | Favorit | Griya Cokelat
+No | Nama Produk | Harga | Berat | Stok | Rating | Status | UMKM
+1 | Batik Motif Kakao | Rp185.000 | 1 pcs | 30 | ⭐4.9 | Handmade | Batik Nglanggeran
+2 | Batik Ecoprint | Rp225.000 | 1 pcs | 20 | ⭐5.0 | Premium | Batik Nglanggeran
+3 | Tas Anyaman Bambu | Rp95.000 | 1 pcs | 35 | ⭐4.8 | Handmade | Kriya Nglanggeran
+4 | Keranjang Bambu | Rp85.000 | 1 pcs | 40 | ⭐4.8 | Handmade | Kriya Nglanggeran
+5 | Miniatur Gunung Api Purba | Rp75.000 | 1 pcs | 30 | ⭐4.9 | Souvenir | Kriya Nglanggeran
+6 | Mug Motif Kakao | Rp48.000 | 1 pcs | 55 | ⭐4.8 | Souvenir | Kriya Nglanggeran
+7 | Gantungan Kunci Gunung Api Purba | Rp18.000 | 1 pcs | 120 | ⭐4.7 | Souvenir | Kriya Nglanggeran
+8 | Topeng Batik Handmade | Rp95.000 | 1 pcs | 25 | ⭐4.9 | Handmade | Batik Nglanggeran

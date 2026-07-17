@@ -26,6 +26,7 @@ model Umkm {
   alamat     String
   no_hp      String
   sejak      String?
+  foto       String?
   desa_id    Int
   desa       Desa     @relation(fields: [desa_id], references: [id], onDelete: Cascade)
   produks    Produk[]
