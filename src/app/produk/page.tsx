@@ -300,29 +300,95 @@ export default function ProdukPage() {
 
           {/* Server-side Pagination Controls */}
           {totalPages > 1 && (
-            <div className="flex justify-center items-center gap-2 mt-12">
+            <div className="flex flex-wrap justify-center items-center gap-1.5 mt-12 bg-white dark:bg-[#1a2e1a] p-3 rounded-2xl border border-gray-100 dark:border-[#2d4a2d] max-w-full overflow-x-auto shadow-sm">
               <button
                 disabled={currentPage === 1}
-                onClick={() => setCurrentPage((prev) => prev - 1)}
-                className="px-3 py-1 rounded bg-gray-100 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-50"
+                onClick={() => { setCurrentPage(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                title="Halaman Pertama"
               >
-                &lt;
+                &laquo;
               </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                  className={`px-3 py-1 rounded ${currentPage === page ? "bg-primary-600 text-white" : "bg-gray-100 dark:bg-primary-950 text-gray-700 dark:text-gray-300"}`}
-                >
-                  {page}
-                </button>
-              ))}
+              <button
+                disabled={currentPage === 1}
+                onClick={() => { setCurrentPage((prev) => prev - 1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+              >
+                Sebelumnya
+              </button>
+
+              {/* First Page if far */}
+              {currentPage > 3 && totalPages > 5 && (
+                <>
+                  <button
+                    onClick={() => { setCurrentPage(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                  >
+                    1
+                  </button>
+                  <span className="text-gray-400 dark:text-gray-600 px-1 text-xs">...</span>
+                </>
+              )}
+
+              {/* Dynamic visible page range */}
+              {(() => {
+                const pages = [];
+                let startPage = Math.max(1, currentPage - 1);
+                let endPage = Math.min(totalPages, currentPage + 1);
+
+                if (currentPage <= 2) {
+                  endPage = Math.min(totalPages, 3);
+                }
+                if (currentPage >= totalPages - 1) {
+                  startPage = Math.max(1, totalPages - 2);
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                  pages.push(i);
+                }
+
+                return pages.map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => { setCurrentPage(page); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+                      currentPage === page
+                        ? "bg-primary-600 text-white shadow-md shadow-primary-500/20"
+                        : "bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/40"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ));
+              })()}
+
+              {/* Last Page if far */}
+              {currentPage < totalPages - 2 && totalPages > 5 && (
+                <>
+                  <span className="text-gray-400 dark:text-gray-600 px-1 text-xs">...</span>
+                  <button
+                    onClick={() => { setCurrentPage(totalPages); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                    className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                  >
+                    {totalPages}
+                  </button>
+                </>
+              )}
+
               <button
                 disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage((prev) => prev + 1)}
-                className="px-3 py-1 rounded bg-gray-100 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-50"
+                onClick={() => { setCurrentPage((prev) => prev + 1); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
               >
-                &gt;
+                Berikutnya
+              </button>
+              <button
+                disabled={currentPage === totalPages}
+                onClick={() => { setCurrentPage(totalPages); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className="px-2.5 py-1.5 text-xs font-semibold rounded-lg bg-gray-50 dark:bg-primary-950 text-gray-700 dark:text-gray-300 disabled:opacity-40 hover:bg-gray-100 dark:hover:bg-primary-900/40 transition-colors"
+                title="Halaman Terakhir"
+              >
+                &raquo;
               </button>
             </div>
           )}
