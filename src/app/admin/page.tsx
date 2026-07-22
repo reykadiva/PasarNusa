@@ -35,6 +35,27 @@ export default function AdminDashboard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedbackMsg, setFeedbackMsg] = useState("");
 
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  useEffect(() => {
+    async function checkAdminAccess() {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user || user.user_metadata?.role !== "admin") {
+        setIsAuthorized(false);
+        setLoading(false);
+        setTimeout(() => {
+          router.push("/login?redirect=/admin");
+        }, 1500);
+        return;
+      }
+
+      setIsAuthorized(true);
+      loadData();
+    }
+    checkAdminAccess();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const loadData = async () => {
     setLoading(true);
     const { count: prodCount, data: prodData } = await supabase.from("produk").select("*");
@@ -53,11 +74,6 @@ export default function AdminDashboard() {
     }
     setLoading(false);
   };
-
-  useEffect(() => {
-    loadData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const openAddModal = () => {
     setEditProduct(null);
@@ -156,10 +172,23 @@ export default function AdminDashboard() {
     window.print();
   };
 
-  if (loading) {
+  if (!isAuthorized) {
     return (
-      <div className="section-container py-16 flex justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
+      <div className="section-container py-20 flex flex-col items-center justify-center text-center">
+        <div className="card p-8 max-w-md w-full space-y-4 border border-red-200 dark:border-red-900/50 shadow-xl">
+          <div className="w-16 h-16 bg-red-100 dark:bg-red-950/50 rounded-full flex items-center justify-center text-red-600 text-2xl mx-auto">
+            🚫
+          </div>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">Akses Ditolak</h2>
+          <p className="text-xs text-gray-500 leading-relaxed">
+            Halaman Dashboard Admin ini dilindungi secara ketat dan hanya dapat diakses oleh akun dengan role <strong className="text-red-600 dark:text-red-400 font-mono">Administrator</strong>.
+          </p>
+          <div className="pt-2">
+            <Link href="/login?redirect=/admin" className="btn-primary w-full inline-block py-2.5 text-xs font-bold rounded-xl">
+              Masuk sebagai Admin
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
