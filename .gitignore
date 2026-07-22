@@ -40,3 +40,4 @@ next-env.d.ts
 # server (Express backend)
 server/node_modules
 server/uploads
+server/.env
