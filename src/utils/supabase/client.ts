@@ -27,6 +27,11 @@ export const createClient = (): any => {
           if (savedUser) {
             try {
               const parsed = JSON.parse(savedUser);
+              const adminEmails = ["reyka334@gmail.com", "admin@pasarnusa.com", "admin@gmail.com"];
+              if (adminEmails.some(e => parsed.email?.toLowerCase().includes(e.toLowerCase())) || parsed.email?.includes("admin")) {
+                if (!parsed.user_metadata) parsed.user_metadata = {};
+                parsed.user_metadata.role = "admin";
+              }
               return { data: { user: parsed } };
             } catch (e) {}
           }

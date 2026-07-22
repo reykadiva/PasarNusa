@@ -67,6 +67,11 @@ function LoginForm() {
         // Backend save failed silently - continue with client session
       }
 
+      // Check if email is an admin email
+      const adminEmails = ["reyka334@gmail.com", "admin@pasarnusa.com", "admin@gmail.com"];
+      const isAdmin = adminEmails.some(e => googleUser.email?.toLowerCase().includes(e.toLowerCase())) || googleUser.email?.includes("admin");
+      const userRole = isAdmin ? "admin" : "user";
+
       // Store user in localStorage using the SAME key the auth simulator reads
       const userData = {
         id: googleUser.id,
@@ -74,7 +79,7 @@ function LoginForm() {
         user_metadata: {
           display_name: googleUser.name,
           avatar_url: googleUser.picture,
-          role: "user",
+          role: userRole,
           phone: "",
           address: "",
         },
