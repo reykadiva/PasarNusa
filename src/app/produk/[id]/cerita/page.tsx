@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
+import { BenefitIcon, LeafIcon, SparklesIcon, BeeIcon, TreeIcon, FlowerIcon } from "@/components/Icons";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -292,25 +293,37 @@ export default function CeritaProdukPage() {
             <div className="pt-4 border-t border-primary-700/40 space-y-3.5 text-xs text-primary-200">
               {cerita?.jenis && (
                 <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gold-400 shrink-0 min-w-[100px]">🐝 Jenis Lebah:</span>
+                  <span className="font-semibold text-gold-400 shrink-0 min-w-[110px] inline-flex items-center gap-1.5">
+                    <BeeIcon className="w-4 h-4 text-gold-400" />
+                    Jenis Lebah:
+                  </span>
                   <span>{cerita.jenis}</span>
                 </div>
               )}
               {cerita?.habitat && (
                 <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gold-400 shrink-0 min-w-[100px]">🌳 Habitat:</span>
+                  <span className="font-semibold text-gold-400 shrink-0 min-w-[110px] inline-flex items-center gap-1.5">
+                    <TreeIcon className="w-4 h-4 text-gold-400" />
+                    Habitat:
+                  </span>
                   <span>{cerita.habitat}</span>
                 </div>
               )}
               {sumberList.length > 0 && (
                 <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gold-400 shrink-0 min-w-[100px]">🌼 Nektar:</span>
+                  <span className="font-semibold text-gold-400 shrink-0 min-w-[110px] inline-flex items-center gap-1.5">
+                    <FlowerIcon className="w-4 h-4 text-gold-400" />
+                    Nektar:
+                  </span>
                   <span>{sumberList.join(", ")}</span>
                 </div>
               )}
               {manfaatList.length > 0 && (
                 <div className="flex items-start gap-2">
-                  <span className="font-semibold text-gold-400 shrink-0 min-w-[100px]">💪 Manfaat:</span>
+                  <span className="font-semibold text-gold-400 shrink-0 min-w-[110px] inline-flex items-center gap-1.5">
+                    <BenefitIcon className="w-4 h-4 text-gold-400" />
+                    Manfaat:
+                  </span>
                   <span>{manfaatList.join(", ")}</span>
                 </div>
               )}

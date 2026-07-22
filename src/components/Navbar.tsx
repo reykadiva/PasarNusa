@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { createClient } from "@/utils/supabase/client";
-import { LogoIcon, SearchIcon, CartIcon, SunIcon, MoonIcon, UserIcon } from "@/components/Icons";
+import { LogoIcon, SearchIcon, CartIcon, SunIcon, MoonIcon, UserIcon, CrownIcon } from "@/components/Icons";
 
 export default function Navbar() {
   const router = useRouter();
@@ -124,7 +124,10 @@ export default function Navbar() {
                   <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-[#1a2e1a] border border-gray-100 dark:border-[#2d4a2d] rounded-xl shadow-lg py-1 z-50">
                     <Link href="/profile" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20">Data Diri</Link>
                     {user?.user_metadata?.role === "admin" && (
-                      <Link href="/admin" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-sm font-bold text-gold-600 dark:text-gold-400 hover:bg-primary-50 dark:hover:bg-primary-900/20">👑 Dashboard Admin</Link>
+                      <Link href="/admin" onClick={() => setIsProfileOpen(false)} className="px-4 py-2 text-sm font-bold text-gold-600 dark:text-gold-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 flex items-center gap-1.5">
+                        <CrownIcon className="w-4 h-4 text-gold-500" />
+                        <span>Dashboard Admin</span>
+                      </Link>
                     )}
                     <Link href="/faq" onClick={() => setIsProfileOpen(false)} className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-900/20">FAQ</Link>
                     <hr className="my-1 border-gray-100 dark:border-[#2d4a2d]" />

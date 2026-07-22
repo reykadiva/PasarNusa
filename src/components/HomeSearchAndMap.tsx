@@ -75,8 +75,9 @@ export function HomeInteractiveMap() {
           >
             <div>
               <div className="font-bold text-sm">{desa.nama}</div>
-              <div className={`text-xs ${activeDesa.id === desa.id ? "text-primary-100" : "text-gray-500 dark:text-gray-400"}`}>
-                📍 {desa.location}
+              <div className={`text-xs flex items-center gap-1 mt-0.5 ${activeDesa.id === desa.id ? "text-primary-100" : "text-gray-500 dark:text-gray-400"}`}>
+                <MapPinIcon className="w-3.5 h-3.5 shrink-0" />
+                <span>{desa.location}</span>
               </div>
             </div>
             {activeDesa.id === desa.id && (

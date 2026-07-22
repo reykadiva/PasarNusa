@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import { LogoIcon, ProdukIcon, UmkmIcon, DesaIcon } from "@/components/Icons";
+import { LogoIcon, ProdukIcon, UmkmIcon, DesaIcon, ShieldBlockIcon, EditIcon, PlusIcon, CloseIcon, FileIcon } from "@/components/Icons";
 
 export default function AdminDashboard() {
   const supabase = createClient();
@@ -176,8 +176,8 @@ export default function AdminDashboard() {
     return (
       <div className="section-container py-20 flex flex-col items-center justify-center text-center">
         <div className="card p-8 max-w-md w-full space-y-4 border border-red-200 dark:border-red-900/50 shadow-xl">
-          <div className="w-16 h-16 bg-red-100 dark:bg-red-950/50 rounded-full flex items-center justify-center text-red-600 text-2xl mx-auto">
-            🚫
+          <div className="w-16 h-16 bg-red-100 dark:bg-red-950/50 rounded-full flex items-center justify-center text-red-600 mx-auto">
+            <ShieldBlockIcon className="w-8 h-8" />
           </div>
           <h2 className="text-xl font-bold text-gray-900 dark:text-white">Akses Ditolak</h2>
           <p className="text-xs text-gray-500 leading-relaxed">
@@ -322,14 +322,24 @@ export default function AdminDashboard() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
           <div className="card max-w-lg w-full p-6 space-y-5 bg-white dark:bg-[#1a2e1a] shadow-2xl border border-gray-200 dark:border-primary-800 rounded-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center border-b border-gray-100 dark:border-primary-800/50 pb-3">
-              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                {editProduct ? "✏️ Edit Produk" : "➕ Tambah Produk Baru"}
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                {editProduct ? (
+                  <>
+                    <EditIcon className="w-5 h-5 text-gold-500" />
+                    <span>Edit Produk</span>
+                  </>
+                ) : (
+                  <>
+                    <PlusIcon className="w-5 h-5 text-primary-500" />
+                    <span>Tambah Produk Baru</span>
+                  </>
+                )}
               </h3>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-lg font-bold"
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-lg font-bold p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-primary-800/50 transition-colors"
               >
-                ✕
+                <CloseIcon className="w-5 h-5" />
               </button>
             </div>
 
@@ -443,8 +453,15 @@ export default function AdminDashboard() {
                     className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                   />
                   <div className="text-xs text-gray-500 space-y-1">
-                    <div className="font-bold text-primary-600 dark:text-primary-400">
-                      {fileName ? `📄 File Terpilih: ${fileName}` : "Klik atau seret gambar/PDF ke sini"}
+                    <div className="font-bold text-primary-600 dark:text-primary-400 flex items-center justify-center gap-1.5">
+                      {fileName ? (
+                        <>
+                          <FileIcon className="w-4 h-4" />
+                          <span>File Terpilih: {fileName}</span>
+                        </>
+                      ) : (
+                        "Klik atau seret gambar/PDF ke sini"
+                      )}
                     </div>
                     <div className="text-[10px]">Mendukung format JPG, PNG, WEBP, atau PDF (Max 5MB)</div>
                   </div>

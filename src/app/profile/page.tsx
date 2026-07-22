@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
+import { CrownIcon } from "@/components/Icons";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -110,7 +111,8 @@ export default function ProfilePage() {
                 href="/admin"
                 className="text-xs bg-gold-500 hover:bg-gold-600 text-wood-950 px-3.5 py-1.5 rounded-xl font-bold transition-all shadow-md flex items-center gap-1.5"
               >
-                👑 Dashboard Admin
+                <CrownIcon className="w-4 h-4" />
+                <span>Dashboard Admin</span>
               </Link>
             )}
             <button
