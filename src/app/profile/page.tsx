@@ -41,7 +41,7 @@ export default function ProfilePage() {
     setUpdating(true);
     setSuccessMsg("");
 
-    const { error } = await supabase.auth.updateUser({
+    const res = await supabase.auth.updateUser({
       data: {
         display_name: displayName,
         phone: phone,
@@ -50,18 +50,17 @@ export default function ProfilePage() {
     });
 
     setUpdating(false);
-    if (error) {
-      alert(error.message);
+    if (res.error) {
+      alert(res.error.message || "Gagal memperbarui profil.");
     } else {
       setSuccessMsg("Profil berhasil diperbarui!");
-      setTimeout(() => setSuccessMsg(""), 3000);
+      setTimeout(() => setSuccessMsg(""), 4000);
     }
   };
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.push("/");
-    router.refresh();
+    window.location.href = "/";
   };
 
   if (loading) {

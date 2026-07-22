@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
+import { HeroSearchForm, HomeInteractiveMap } from "@/components/HomeSearchAndMap";
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -202,24 +203,7 @@ export default async function Home() {
               </p>
 
               {/* Search bar inside glass */}
-              <div className="mt-8">
-                <div className="relative flex w-full items-center overflow-hidden rounded-2xl bg-white/95 shadow-xl ring-1 ring-white/30">
-                  <input
-                    type="text"
-                    placeholder="Cari produk, desa, atau UMKM..."
-                    className="w-full border-0 bg-transparent py-4 pl-6 pr-4 text-gray-700 placeholder:text-gray-400 focus:outline-none"
-                  />
-                  <button
-                    type="button"
-                    className="mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-600 text-white transition-all hover:bg-primary-700 hover:scale-105"
-                    aria-label="Cari"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.5 10.5a7.5 7.5 0 0013.15 6.15z" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+              <HeroSearchForm />
 
               {/* Stats row */}
               <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-white/70">
@@ -383,37 +367,8 @@ export default async function Home() {
             </Link>
           </div>
 
-          {/* Map placeholder */}
-          <div className="mt-8 flex h-[400px] items-center justify-center rounded-2xl bg-gradient-to-br from-primary-100 to-primary-50 dark:from-primary-900/30 dark:to-primary-900/10 border border-primary-200/50 dark:border-primary-800/30">
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary-200/60 dark:bg-primary-800/40">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-primary-600 dark:text-primary-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
-                  />
-                </svg>
-              </div>
-              <p className="text-lg font-semibold text-primary-700 dark:text-primary-300">
-                Peta interaktif akan ditampilkan di sini
-              </p>
-              <p className="mt-1 text-sm text-primary-500/70 dark:text-primary-400/60">
-                Segera hadir dengan Leaflet.js
-              </p>
-            </div>
+          <div className="mt-8">
+            <HomeInteractiveMap />
           </div>
         </div>
       </section>
