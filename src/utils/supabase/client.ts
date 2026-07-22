@@ -7,8 +7,12 @@ export const createClient = (): any => {
   return {
     auth: {
       getUser: async () => {
-        // Check localStorage first
         if (typeof window !== "undefined") {
+          // If explicitly logged out, return null
+          if (localStorage.getItem("pasarnusa_logged_out") === "true") {
+            return { data: { user: null } };
+          }
+
           const savedUser = localStorage.getItem("pasarnusa_user");
           if (savedUser) {
             try {
@@ -24,13 +28,16 @@ export const createClient = (): any => {
             const data = await res.json();
             if (data.loggedIn && data.user) {
               const u = { ...data.user, user_metadata: { display_name: data.user.nama } };
-              if (typeof window !== "undefined") localStorage.setItem("pasarnusa_user", JSON.stringify(u));
+              if (typeof window !== "undefined") {
+                localStorage.removeItem("pasarnusa_logged_out");
+                localStorage.setItem("pasarnusa_user", JSON.stringify(u));
+              }
               return { data: { user: u } };
             }
           }
         } catch (e) {}
 
-        // Fallback default user if not logged out
+        // Default mock user if first time visit
         const defaultUser = {
           id: "usr_dosen_1",
           email: "dosen.penguji@pasarnusa.com",
@@ -59,11 +66,52 @@ export const createClient = (): any => {
               ...updatePayload.data
             };
             localStorage.setItem("pasarnusa_user", JSON.stringify(current));
+            localStorage.removeItem("pasarnusa_logged_out");
           }
           return { data: { user: true }, error: null };
         } catch (err: any) {
           return { data: null, error: err };
         }
+      },
+
+      signInWithPassword: async ({ email, password }: any) => {
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("pasarnusa_logged_out");
+          const role = email.includes("admin") ? "admin" : "user";
+          const name = role === "admin" ? "Administrator PasarNusa" : "Reyka Diva";
+          const loggedUser = {
+            id: `usr_${Date.now()}`,
+            email: email,
+            user_metadata: {
+              display_name: name,
+              role: role,
+              phone: "081234567890",
+              address: "Jl. Nusantara No. 88, Jakarta"
+            }
+          };
+          localStorage.setItem("pasarnusa_user", JSON.stringify(loggedUser));
+        }
+        return { data: { user: true }, error: null };
+      },
+
+      signUp: async ({ email, password, options }: any) => {
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("pasarnusa_logged_out");
+          const name = options?.data?.display_name || email.split("@")[0];
+          const role = options?.data?.role || "user";
+          const newUser = {
+            id: `usr_${Date.now()}`,
+            email: email,
+            user_metadata: {
+              display_name: name,
+              role: role,
+              phone: "081234567890",
+              address: "Jl. Nusantara No. 88, Jakarta"
+            }
+          };
+          localStorage.setItem("pasarnusa_user", JSON.stringify(newUser));
+        }
+        return { data: { user: true }, error: null };
       },
 
       onAuthStateChange: (callback: any) => {
@@ -73,6 +121,7 @@ export const createClient = (): any => {
       signOut: async () => {
         if (typeof window !== "undefined") {
           localStorage.removeItem("pasarnusa_user");
+          localStorage.setItem("pasarnusa_logged_out", "true");
         }
         try {
           await fetch(`${API_URL}/auth/logout`);
