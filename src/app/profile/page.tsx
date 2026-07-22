@@ -104,12 +104,20 @@ export default function ProfilePage() {
               </span>
             </div>
           </div>
-          <button
-            onClick={handleLogout}
-            className="text-xs text-red-500 hover:text-white border border-red-500/25 hover:bg-red-500 px-3 py-1.5 rounded-xl font-bold transition-all"
-          >
-            Keluar
-          </button>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/admin"
+              className="text-xs bg-gold-500 hover:bg-gold-600 text-wood-950 px-3.5 py-1.5 rounded-xl font-bold transition-all shadow-md flex items-center gap-1.5"
+            >
+              👑 Dashboard Admin
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="text-xs text-red-500 hover:text-white border border-red-500/25 hover:bg-red-500 px-3 py-1.5 rounded-xl font-bold transition-all"
+            >
+              Keluar
+            </button>
+          </div>
         </div>
 
         {successMsg && (
