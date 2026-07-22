@@ -332,7 +332,7 @@ export default function ProdukPage() {
 
               {/* Dynamic visible page range */}
               {(() => {
-                const pages = [];
+                const pages: number[] = [];
                 let startPage = Math.max(1, currentPage - 1);
                 let endPage = Math.min(totalPages, currentPage + 1);
 

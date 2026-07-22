@@ -45,10 +45,10 @@ export default function AdminDashboard() {
     if (!products || products.length === 0) return;
 
     const headers = ["Nama Produk", "Harga", "Stok", "Tanggal Dibuat"];
-    const rows = products.map((p) => [p.nama, p.harga, p.stok, p.created_at]);
+    const rows = products.map((p: any) => [p.nama, p.harga, p.stok, p.created_at]);
     
     const csvContent = "data:text/csv;charset=utf-8," 
-      + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      + [headers.join(","), ...rows.map((e: any) => e.join(","))].join("\n");
       
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
