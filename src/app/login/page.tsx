@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
+
+const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "634110685120-btss5ukl8fnn0tbb04j6vmmdmeekjhle.apps.googleusercontent.com";
 
 function LoginForm() {
   const router = useRouter();
@@ -28,6 +30,98 @@ function LoginForm() {
     }
     checkUser();
   }, [router, redirectUrl, supabase]);
+
+  // Handle Google OAuth callback (implicit flow - token comes back in URL hash)
+  const handleGoogleCallback = useCallback(async (accessToken: string) => {
+    setLoading(true);
+    setErrorMsg("");
+    setSuccessMsg("Login Google berhasil! Menyimpan data...");
+
+    try {
+      // Fetch user info from Google using the access token
+      const res = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+
+      if (!res.ok) throw new Error("Gagal mengambil data Google");
+
+      const googleUser = await res.json();
+
+      // Save user data to our Express/MongoDB backend
+      try {
+        const API_URL = typeof window !== "undefined" && window.location.hostname === "localhost"
+          ? "http://localhost:5000/api"
+          : "/api";
+
+        await fetch(`${API_URL}/auth/google/save`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            googleId: googleUser.id,
+            name: googleUser.name,
+            email: googleUser.email,
+            picture: googleUser.picture,
+          }),
+        });
+      } catch {
+        // Backend save failed silently - continue with local login
+      }
+
+      // Store user in localStorage for the app to use
+      const userData = {
+        id: googleUser.id,
+        email: googleUser.email,
+        user_metadata: {
+          display_name: googleUser.name,
+          avatar_url: googleUser.picture,
+          role: "user",
+        },
+        app_metadata: { provider: "google" },
+        last_sign_in_at: new Date().toISOString(),
+      };
+
+      localStorage.setItem("demo_user", JSON.stringify(userData));
+      localStorage.setItem("google_user", JSON.stringify({
+        name: googleUser.name,
+        email: googleUser.email,
+        picture: googleUser.picture,
+        lastLogin: new Date().toISOString(),
+      }));
+
+      // Clean URL hash
+      window.history.replaceState(null, "", window.location.pathname);
+
+      setSuccessMsg(`Selamat datang, ${googleUser.name}! Mengalihkan...`);
+      setTimeout(() => {
+        router.push(redirectUrl);
+        router.refresh();
+      }, 1200);
+    } catch (err: any) {
+      setErrorMsg(err.message || "Google login gagal");
+      setLoading(false);
+    }
+  }, [router, redirectUrl]);
+
+  // Check for Google OAuth callback token in URL hash on page load
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hash = window.location.hash;
+    if (hash && hash.includes("access_token")) {
+      const params = new URLSearchParams(hash.substring(1));
+      const accessToken = params.get("access_token");
+      if (accessToken) {
+        handleGoogleCallback(accessToken);
+      }
+    }
+  }, [handleGoogleCallback]);
+
+  // Google OAuth login - redirect to Google's auth endpoint
+  const handleGoogleLogin = () => {
+    const redirectUri = `${window.location.origin}/login`;
+    const scope = "openid email profile";
+    const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${GOOGLE_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token&scope=${encodeURIComponent(scope)}&prompt=select_account`;
+    window.location.href = googleAuthUrl;
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -197,8 +291,10 @@ function LoginForm() {
       </div>
 
       {/* Google Login Button */}
-      <a
-        href="http://localhost:5000/api/auth/google"
+      <button
+        type="button"
+        onClick={handleGoogleLogin}
+        disabled={loading}
         className="w-full inline-flex items-center justify-center gap-3 px-6 py-3 border border-gray-200 dark:border-primary-800/40 rounded-xl bg-white dark:bg-[#1a2e1a] text-gray-700 dark:text-gray-200 font-semibold text-sm hover:bg-gray-50 dark:hover:bg-primary-900/30 active:scale-[0.98] transition-all shadow-sm"
       >
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -208,7 +304,7 @@ function LoginForm() {
           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.85c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335"/>
         </svg>
         Google Account
-      </a>
+      </button>
 
       <div className="relative flex items-center justify-center my-2">
         <div className="absolute inset-x-0 h-px bg-gray-200 dark:bg-primary-800/40"></div>
