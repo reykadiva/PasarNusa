@@ -67,7 +67,7 @@ function LoginForm() {
         // Backend save failed silently - continue with local login
       }
 
-      // Store user in localStorage for the app to use
+      // Store user in localStorage using the SAME key the auth simulator reads
       const userData = {
         id: googleUser.id,
         email: googleUser.email,
@@ -75,12 +75,16 @@ function LoginForm() {
           display_name: googleUser.name,
           avatar_url: googleUser.picture,
           role: "user",
+          phone: "",
+          address: "",
         },
         app_metadata: { provider: "google" },
         last_sign_in_at: new Date().toISOString(),
       };
 
-      localStorage.setItem("demo_user", JSON.stringify(userData));
+      // CRITICAL: Use pasarnusa_user (the key that getUser reads) and clear logout flag
+      localStorage.removeItem("pasarnusa_logged_out");
+      localStorage.setItem("pasarnusa_user", JSON.stringify(userData));
       localStorage.setItem("google_user", JSON.stringify({
         name: googleUser.name,
         email: googleUser.email,
