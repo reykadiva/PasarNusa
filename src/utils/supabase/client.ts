@@ -1,7 +1,13 @@
 // Supabase Browser Client Simulator directing queries to Node.js/Express + MongoDB with Local Fallback
 import mockData from "../../../server/mockDatabase.json";
 
-const API_URL = "http://localhost:5000/api";
+// Detect API_URL dynamically based on environment
+const getApiUrl = () => {
+  if (typeof window !== "undefined" && window.location.hostname === "localhost") {
+    return "http://localhost:5000/api";
+  }
+  return null; // Don't attempt localhost fetch on Vercel
+};
 
 export const createClient = (): any => {
   return {
@@ -22,20 +28,29 @@ export const createClient = (): any => {
           }
         }
         
-        try {
-          const res = await fetch(`${API_URL}/auth/me`, { credentials: "omit" });
-          if (res.ok) {
-            const data = await res.json();
-            if (data.loggedIn && data.user) {
-              const u = { ...data.user, user_metadata: { display_name: data.user.nama } };
-              if (typeof window !== "undefined") {
-                localStorage.removeItem("pasarnusa_logged_out");
-                localStorage.setItem("pasarnusa_user", JSON.stringify(u));
+        const API_URL = getApiUrl();
+        if (API_URL) {
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 1000);
+            const res = await fetch(`${API_URL}/auth/me`, { 
+              credentials: "omit",
+              signal: controller.signal 
+            });
+            clearTimeout(timeoutId);
+            if (res.ok) {
+              const data = await res.json();
+              if (data.loggedIn && data.user) {
+                const u = { ...data.user, user_metadata: { display_name: data.user.nama } };
+                if (typeof window !== "undefined") {
+                  localStorage.removeItem("pasarnusa_logged_out");
+                  localStorage.setItem("pasarnusa_user", JSON.stringify(u));
+                }
+                return { data: { user: u } };
               }
-              return { data: { user: u } };
             }
-          }
-        } catch (e) {}
+          } catch (e) {}
+        }
 
         // Default mock user if first time visit
         const defaultUser = {
