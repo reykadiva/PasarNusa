@@ -9,8 +9,12 @@ const getApiUrl = () => {
   return null; // Don't attempt localhost fetch on Vercel
 };
 
+let clientInstance: any = null;
+
 export const createClient = (): any => {
-  return {
+  if (clientInstance) return clientInstance;
+
+  clientInstance = {
     auth: {
       getUser: async () => {
         if (typeof window !== "undefined") {
@@ -373,6 +377,7 @@ export const createClient = (): any => {
       return chain;
     }
   };
+  return clientInstance;
 };
 
 

@@ -79,7 +79,8 @@ export default function KeranjangPage() {
       setLoading(false);
     }
     checkAuth();
-  }, [router, supabase]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router]);
 
   const handleCheckoutAll = () => {
     // Build a single WhatsApp message to admin with all items

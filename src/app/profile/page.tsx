@@ -34,7 +34,8 @@ export default function ProfilePage() {
       setLoading(false);
     }
     loadProfile();
-  }, [router, supabase]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();

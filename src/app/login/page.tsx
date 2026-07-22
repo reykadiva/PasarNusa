@@ -29,7 +29,8 @@ function LoginForm() {
       }
     }
     checkUser();
-  }, [router, redirectUrl, supabase]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router, redirectUrl]);
 
   // Handle Google OAuth callback (implicit flow - token comes back in URL hash)
   const handleGoogleCallback = useCallback(async (accessToken: string) => {
