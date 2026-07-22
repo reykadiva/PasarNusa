@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { SearchIcon, MapPinIcon } from "@/components/Icons";
 
 export function HeroSearchForm() {
   const router = useRouter();
@@ -32,9 +33,7 @@ export function HeroSearchForm() {
           className="mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary-600 text-white transition-all hover:bg-primary-700 hover:scale-105"
           aria-label="Cari"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.5 10.5a7.5 7.5 0 0013.15 6.15z" />
-          </svg>
+          <SearchIcon className="h-5 w-5" />
         </button>
       </div>
     </form>

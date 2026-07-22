@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { createClient } from "@/utils/supabase/client";
+import { LogoIcon, SearchIcon, CartIcon, SunIcon, MoonIcon, UserIcon } from "@/components/Icons";
 
 export default function Navbar() {
   const router = useRouter();
@@ -72,12 +73,13 @@ export default function Navbar() {
     : user?.email?.charAt(0).toUpperCase() || "U";
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 \${isScrolled ? "bg-white/80 dark:bg-[#1a2e1a]/80 backdrop-blur-md shadow-md border-b border-gray-100 dark:border-[#2d4a2d]" : "bg-transparent"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 dark:bg-[#1a2e1a]/80 backdrop-blur-md shadow-md border-b border-gray-100 dark:border-[#2d4a2d]" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-display text-xl font-bold text-gradient">
-            PasarNusa
+          <Link href="/" className="flex items-center gap-2.5 font-display text-xl font-bold text-gradient">
+            <LogoIcon className="w-8 h-8" />
+            <span>PasarNusa</span>
           </Link>
 
           {/* Desktop Nav Links */}
@@ -90,17 +92,13 @@ export default function Navbar() {
 
           {/* Right Menu Icons */}
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/produk" className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+            <Link href="/produk" aria-label="Cari Produk" className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
+              <SearchIcon className="w-5 h-5" />
             </Link>
 
             {/* Cart Icon */}
-            <Link href="/keranjang" className="relative p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-              </svg>
+            <Link href="/keranjang" aria-label="Keranjang" className="relative p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
+              <CartIcon className="w-5 h-5" />
               {totalItems > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 bg-gold-500 text-wood-900 text-[10px] font-bold min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1">
                   {totalItems}
@@ -108,16 +106,13 @@ export default function Navbar() {
               )}
             </Link>
 
-            <button onClick={toggleDarkMode} className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors">
-              {darkMode ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-                </svg>
-              ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-              )}
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={toggleDarkMode}
+              aria-label="Toggle Mode"
+              className="p-2 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary-900/30 transition-colors"
+            >
+              {darkMode ? <SunIcon className="w-5 h-5 text-gold-400" /> : <MoonIcon className="w-5 h-5" />}
             </button>
 
             {user ? (
