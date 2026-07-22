@@ -1,21 +1,32 @@
 // Supabase Server Client Simulator directing queries to Node.js/Express + MongoDB with Local Fallback
 import mockData from "../../../server/mockDatabase.json";
 
-const API_URL = "http://localhost:5000/api";
+// Only try local Express API when running locally in development mode
+const getApiUrl = () => {
+  if (process.env.EXPRESS_API_URL) return process.env.EXPRESS_API_URL;
+  if (process.env.NODE_ENV === "development") return "http://localhost:5000/api";
+  return null; // On production Vercel server, fallback directly to mockData without delay
+};
 
 export const createClient = (cookieStore?: any): any => {
   return {
     auth: {
       getUser: async () => {
-        try {
-          const res = await fetch(`${API_URL}/auth/me`);
-          if (res.ok) {
-            const data = await res.json();
-            if (data.loggedIn && data.user) {
-              return { data: { user: { ...data.user, user_metadata: { display_name: data.user.nama } } } };
+        const API_URL = getApiUrl();
+        if (API_URL) {
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 500);
+            const res = await fetch(`${API_URL}/auth/me`, { signal: controller.signal });
+            clearTimeout(timeoutId);
+            if (res.ok) {
+              const data = await res.json();
+              if (data.loggedIn && data.user) {
+                return { data: { user: { ...data.user, user_metadata: { display_name: data.user.nama } } } };
+              }
             }
-          }
-        } catch (e) {}
+          } catch (e) {}
+        }
 
         return { data: { user: {
           id: "usr_dosen_1",
@@ -63,10 +74,16 @@ export const createClient = (cookieStore?: any): any => {
         single: async () => {
           const targetId = filters.id || filters._id;
           let rawItem: any = null;
-          try {
-            const res = await fetch(`${API_URL}/${table}/${targetId}`);
-            if (res.ok) rawItem = await res.json();
-          } catch (e) {}
+          const API_URL = getApiUrl();
+          if (API_URL) {
+            try {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 500);
+              const res = await fetch(`${API_URL}/${table}/${targetId}`, { signal: controller.signal });
+              clearTimeout(timeoutId);
+              if (res.ok) rawItem = await res.json();
+            } catch (e) {}
+          }
 
           if (!rawItem) {
             if (table === "desa") {
@@ -115,17 +132,23 @@ export const createClient = (cookieStore?: any): any => {
       const execute = () => {
         return new Promise(async (resolve) => {
           let items: any[] = [];
-          try {
-            let url = `${API_URL}/${table}?`;
-            if (filters.kategori) url += `kategori=${encodeURIComponent(filters.kategori)}&`;
-            if (filters.desa) url += `desa=${encodeURIComponent(filters.desa)}&`;
-            if (sortOrder) url += `sort=${sortOrder}&`;
+          const API_URL = getApiUrl();
+          if (API_URL) {
+            try {
+              let url = `${API_URL}/${table}?`;
+              if (filters.kategori) url += `kategori=${encodeURIComponent(filters.kategori)}&`;
+              if (filters.desa) url += `desa=${encodeURIComponent(filters.desa)}&`;
+              if (sortOrder) url += `sort=${sortOrder}&`;
 
-            const res = await fetch(url);
-            if (res.ok) {
-              items = await res.json();
-            }
-          } catch (e) {}
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 500);
+              const res = await fetch(url, { signal: controller.signal });
+              clearTimeout(timeoutId);
+              if (res.ok) {
+                items = await res.json();
+              }
+            } catch (e) {}
+          }
 
           if (!items || items.length === 0) {
             if (table === "desa") items = mockData.desas;

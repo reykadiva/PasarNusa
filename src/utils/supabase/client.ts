@@ -135,12 +135,21 @@ export const createClient = (): any => {
 
       signOut: async () => {
         if (typeof window !== "undefined") {
-          localStorage.removeItem("pasarnusa_user");
           localStorage.setItem("pasarnusa_logged_out", "true");
+          localStorage.removeItem("pasarnusa_user");
+          localStorage.removeItem("google_user");
+          localStorage.removeItem("demo_user");
         }
-        try {
-          await fetch(`${API_URL}/auth/logout`);
-        } catch (e) {}
+
+        const API_URL = getApiUrl();
+        if (API_URL) {
+          try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 500);
+            await fetch(`${API_URL}/auth/logout`, { signal: controller.signal });
+            clearTimeout(timeoutId);
+          } catch (e) {}
+        }
         return { error: null };
       }
     },
@@ -148,8 +157,8 @@ export const createClient = (): any => {
     from: (table: string) => {
       let filters: any = {};
       let sortOrder = "terbaru";
-      let minPrice = "";
-      let maxPrice = "";
+      let minPrice: number | null = null;
+      let maxPrice: number | null = null;
       let searchVal = "";
       let limitVal = 100;
       let fromRange = 0;
@@ -197,12 +206,17 @@ export const createClient = (): any => {
         },
         single: async () => {
           const targetId = filters.id || filters._id;
-          // Try fetching from local mock first if network fails
           let rawItem: any = null;
-          try {
-            const res = await fetch(`${API_URL}/${table}/${targetId}`);
-            if (res.ok) rawItem = await res.json();
-          } catch (e) {}
+          const API_URL = getApiUrl();
+          if (API_URL) {
+            try {
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 500);
+              const res = await fetch(`${API_URL}/${table}/${targetId}`, { signal: controller.signal });
+              clearTimeout(timeoutId);
+              if (res.ok) rawItem = await res.json();
+            } catch (e) {}
+          }
 
           if (!rawItem) {
             // Offline local fallback
@@ -252,20 +266,26 @@ export const createClient = (): any => {
       const execute = () => {
         return new Promise(async (resolve) => {
           let items: any[] = [];
-          try {
-            let url = `${API_URL}/${table}?`;
-            if (searchVal) url += `search=${encodeURIComponent(searchVal)}&`;
-            if (filters.kategori) url += `kategori=${encodeURIComponent(filters.kategori)}&`;
-            if (filters.desa) url += `desa=${encodeURIComponent(filters.desa)}&`;
-            if (sortOrder) url += `sort=${sortOrder}&`;
-            if (minPrice) url += `minPrice=${minPrice}&`;
-            if (maxPrice) url += `maxPrice=${maxPrice}&`;
+          const API_URL = getApiUrl();
+          if (API_URL) {
+            try {
+              let url = `${API_URL}/${table}?`;
+              if (searchVal) url += `search=${encodeURIComponent(searchVal)}&`;
+              if (filters.kategori) url += `kategori=${encodeURIComponent(filters.kategori)}&`;
+              if (filters.desa) url += `desa=${encodeURIComponent(filters.desa)}&`;
+              if (sortOrder) url += `sort=${sortOrder}&`;
+              if (minPrice) url += `minPrice=${minPrice}&`;
+              if (maxPrice) url += `maxPrice=${maxPrice}&`;
 
-            const res = await fetch(url);
-            if (res.ok) {
-              items = await res.json();
-            }
-          } catch (e) {}
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 500);
+              const res = await fetch(url, { signal: controller.signal });
+              clearTimeout(timeoutId);
+              if (res.ok) {
+                items = await res.json();
+              }
+            } catch (e) {}
+          }
 
           // Fallback to local mock database if items is empty
           if (!items || items.length === 0) {
