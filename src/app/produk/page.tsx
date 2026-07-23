@@ -169,6 +169,20 @@ function ProdukContent() {
             (p: any) => p.umkm && String(p.umkm.desa?.id || p.umkm.desa_id || p.umkm.desa) === String(selectedDesa)
           );
         }
+        if (minPrice !== "") {
+          const parsedMin = parseFloat(minPrice);
+          if (!isNaN(parsedMin)) {
+            const normalizedMin = parsedMin < 1000 ? parsedMin * 1000 : parsedMin;
+            filteredData = filteredData.filter((p: any) => (p.harga || 0) >= normalizedMin);
+          }
+        }
+        if (maxPrice !== "") {
+          const parsedMax = parseFloat(maxPrice);
+          if (!isNaN(parsedMax)) {
+            const normalizedMax = parsedMax < 1000 ? parsedMax * 1000 : parsedMax;
+            filteredData = filteredData.filter((p: any) => (p.harga || 0) <= normalizedMax);
+          }
+        }
         setProduks(filteredData);
         if (count) {
           setTotalPages(Math.ceil(filteredData.length / limit));

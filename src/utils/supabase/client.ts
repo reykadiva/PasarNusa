@@ -309,7 +309,18 @@ export const createClient = (): any => {
           // Fallback to local mock database if items is empty
           if (!items || items.length === 0) {
             if (table === "desa") {
-              items = mockData.desas;
+              items = mockData.desas.map((d: any) => {
+                const dId = d._id ? String(d._id) : String(d.id);
+                const count = mockData.umkms.filter((u: any) => {
+                  const uDesaId = typeof u.desa === 'object' ? (u.desa._id || u.desa.id) : u.desa;
+                  return String(uDesaId) === dId;
+                }).length;
+                return {
+                  ...d,
+                  id: dId,
+                  umkm: [{ count: count || 12 }]
+                };
+              });
             } else if (table === "umkm") {
               items = mockData.umkms;
             } else if (table === "kategori") {
@@ -422,9 +433,21 @@ export const createClient = (): any => {
             });
           }
 
-          // Filter by price
-          if (minPrice) mappedData = mappedData.filter((i: any) => (i.harga || 0) >= Number(minPrice));
-          if (maxPrice) mappedData = mappedData.filter((i: any) => (i.harga || 0) <= Number(maxPrice));
+          // Smart filter by price (handles 40 & 40000)
+          if (minPrice) {
+            const parsedMin = parseFloat(String(minPrice));
+            if (!isNaN(parsedMin)) {
+              const normalizedMin = parsedMin < 1000 ? parsedMin * 1000 : parsedMin;
+              mappedData = mappedData.filter((i: any) => (i.harga || 0) >= normalizedMin);
+            }
+          }
+          if (maxPrice) {
+            const parsedMax = parseFloat(String(maxPrice));
+            if (!isNaN(parsedMax)) {
+              const normalizedMax = parsedMax < 1000 ? parsedMax * 1000 : parsedMax;
+              mappedData = mappedData.filter((i: any) => (i.harga || 0) <= normalizedMax);
+            }
+          }
 
           const sliced = mappedData.slice(fromRange, fromRange + limitVal);
           resolve({ data: sliced, count: mappedData.length, error: null });
