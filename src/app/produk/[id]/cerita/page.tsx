@@ -529,15 +529,15 @@ export default function CeritaProdukPage() {
           </div>
           <div className="bg-primary-800/30 border border-primary-700/40 rounded-2xl p-5">
             <div className="flex items-center gap-4">
-              {cerita?.petani_foto ? (
-                <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-gold-500/50 shrink-0">
-                  <Image src={cerita.petani_foto} alt="Foto petani" fill className="object-cover" sizes="64px" />
-                </div>
-              ) : (
-                <div className="w-16 h-16 rounded-full bg-primary-700/50 border-2 border-primary-600/30 flex items-center justify-center shrink-0">
-                  <IconUser className="w-7 h-7 text-primary-400" />
-                </div>
-              )}
+              <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-gold-500/50 shrink-0 shadow-md bg-primary-950">
+                <Image 
+                  src={cerita?.petani_foto || (produk.umkm as any).foto || "/images/petani/laki.jpeg"} 
+                  alt={produk.umkm.pemilik || "Foto petani"} 
+                  fill 
+                  className="object-cover object-[center_20%]" 
+                  sizes="64px" 
+                />
+              </div>
               <div>
                 <h3 className="text-white font-bold text-lg">
                   {produk.umkm.pemilik}

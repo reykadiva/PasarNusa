@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 
@@ -14,6 +15,7 @@ interface UMKM {
   nama: string;
   pemilik: string;
   alamat: string;
+  foto?: string;
   desa: Desa;
 }
 
@@ -78,13 +80,19 @@ export default function UMKMListPage() {
           {filteredUmkms.map((umkm) => (
             <Link href={`/umkm/${umkm.id}`} key={umkm.id} className="card p-6 flex flex-col justify-between hover:border-primary-500 hover:shadow-lg transition-all duration-300">
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-950/40 text-primary-700 dark:text-primary-400 flex items-center justify-center font-bold text-lg">
-                    {umkm.nama.charAt(0)}
+                <div className="flex items-center gap-3.5 mb-4">
+                  <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-500/30 relative shrink-0 shadow-md bg-primary-100 dark:bg-primary-950">
+                    <Image
+                      src={umkm.foto || "/images/petani/laki.jpeg"}
+                      alt={umkm.pemilik}
+                      fill
+                      sizes="56px"
+                      className="object-cover object-[center_20%]"
+                    />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-950 dark:text-white line-clamp-1">{umkm.nama}</h3>
-                    <p className="text-xs text-gray-400">Pemilik: {umkm.pemilik}</p>
+                    <p className="text-xs text-primary-600 dark:text-primary-400 font-semibold">Pemilik: {umkm.pemilik}</p>
                   </div>
                 </div>
                 <p className="text-sm text-gray-600 dark:text-gray-300 italic mb-4 line-clamp-2 flex items-start gap-1">

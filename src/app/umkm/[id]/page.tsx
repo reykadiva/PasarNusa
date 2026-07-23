@@ -107,8 +107,14 @@ export default function DetailUMKMPage() {
         {/* Left column: Profile details */}
         <div className="lg:col-span-2 space-y-8">
           <div className="card p-8 flex flex-col md:flex-row gap-6 items-start">
-            <div className="w-24 h-24 rounded-full bg-primary-600 flex items-center justify-center text-white text-3xl font-bold flex-shrink-0">
-              {umkm.nama.charAt(0)}
+            <div className="w-28 h-28 rounded-full overflow-hidden border-4 border-primary-500/40 relative flex-shrink-0 shadow-lg bg-primary-100 dark:bg-primary-950">
+              <Image
+                src={(umkm as any).foto || "/images/petani/laki.jpeg"}
+                alt={umkm.pemilik}
+                fill
+                sizes="112px"
+                className="object-cover object-[center_20%]"
+              />
             </div>
             <div className="space-y-3">
               <span className="badge flex items-center gap-1 w-max">
