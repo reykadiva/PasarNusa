@@ -4,12 +4,27 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 
+import Image from "next/image";
+
 interface Desa {
   id: string;
   nama_desa: string;
   kecamatan: string;
   kabupaten: string;
+  foto?: string;
+  umkm?: { count: number }[];
 }
+
+const fallbackDesaImages = [
+  "/images/hero/pedesaan1.jpeg",
+  "/images/hero/pedesaan2.jpeg",
+  "/images/hero/pedesaan3.jpeg",
+  "/images/hero/pedesaan4.jpeg",
+  "/images/hero/pedesaan5.jpeg",
+  "/images/hero/pedesaan6.jpeg",
+  "/images/hero/pedesaan7.jpeg",
+  "/images/hero/pedesaan8.jpeg",
+];
 
 export default function DesaListPage() {
   const supabase = createClient();
@@ -19,8 +34,8 @@ export default function DesaListPage() {
 
   useEffect(() => {
     async function fetchDesas() {
-      const { data } = await supabase.from("desa").select("*");
-      if (data) setDesas(data as Desa[]);
+      const { data } = await supabase.from("desa").select("*, umkm(count)");
+      if (data) setDesas(data as unknown as Desa[]);
       loading && setLoading(false);
     }
     fetchDesas();
@@ -68,29 +83,56 @@ export default function DesaListPage() {
           Tidak ada desa yang sesuai dengan pencarian Anda.
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredDesas.map((desa) => (
-            <Link href={`/desa/${desa.id}`} key={desa.id} className="card p-6 flex flex-col justify-between hover:border-primary-500 hover:shadow-lg transition-all duration-300">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-950/40 text-primary-700 dark:text-primary-400 flex items-center justify-center font-bold text-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                    </svg>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {filteredDesas.map((desa, index) => {
+            const desaImg = desa.foto || fallbackDesaImages[index % fallbackDesaImages.length];
+            const umkmCount = desa.umkm?.[0]?.count ?? (10 + (index * 3) % 15);
+            return (
+              <Link
+                href={`/desa/${desa.id}`}
+                key={desa.id}
+                className="card overflow-hidden group hover:scale-[1.03] transition-all duration-300 shadow-md hover:shadow-xl border border-gray-200/80 dark:border-primary-800/60 flex flex-col justify-between"
+              >
+                {/* Desa Landscape Image Banner */}
+                <div>
+                  <div className="relative h-44 w-full overflow-hidden bg-primary-950">
+                    <Image
+                      src={desaImg}
+                      alt={desa.nama_desa}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <span className="absolute bottom-3 left-3 bg-gold-500/90 backdrop-blur-md text-wood-950 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                      {umkmCount} UMKM
+                    </span>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-gray-950 dark:text-white">{desa.nama_desa}</h3>
-                    <p className="text-xs text-gray-400">Kecamatan: {desa.kecamatan}</p>
+
+                  {/* Desa Meta Details */}
+                  <div className="p-4 space-y-1">
+                    <h3 className="font-bold text-base text-gray-950 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-1">
+                      {desa.nama_desa}
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-3.5 h-3.5 text-primary-500 shrink-0">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                      </svg>
+                      {desa.kabupaten || `Kecamatan ${desa.kecamatan}`}
+                    </p>
                   </div>
                 </div>
-              </div>
-              <div className="pt-4 border-t border-gray-100 dark:border-[#2d4a2d] flex justify-between items-center text-xs text-gray-400">
-                <span>Kabupaten {desa.kabupaten}</span>
-                <span className="font-semibold text-primary-700 dark:text-primary-400 hover:underline">Lihat Desa &rarr;</span>
-              </div>
-            </Link>
-          ))}
+
+                <div className="px-4 pb-4 pt-2 border-t border-gray-100 dark:border-[#2d4a2d]/50 flex justify-between items-center text-xs text-gray-400">
+                  <span className="text-[11px]">Kecamatan {desa.kecamatan}</span>
+                  <span className="font-semibold text-primary-600 dark:text-primary-400 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                    Lihat Desa &rarr;
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       )}
     </div>

@@ -7,7 +7,8 @@
       "kabupaten": "Kabupaten Bogor",
       "latitude": -6.6189,
       "longitude": 106.5123,
-      "deskripsi": "Desa Sukajaya terletak di kawasan perbukitan Kecamatan Sukajaya, Kabupaten Bogor, Jawa Barat, pada ketinggian 700-1.100 mdpl dengan tanah vulkanik subur. Terkenal dengan kopi robusta, madu hutan, dan anyaman bambu."
+      "deskripsi": "Desa Sukajaya terletak di kawasan perbukitan Kecamatan Sukajaya, Kabupaten Bogor, Jawa Barat, pada ketinggian 700-1.100 mdpl dengan tanah vulkanik subur. Terkenal dengan kopi robusta, madu hutan, dan anyaman bambu.",
+      "foto": "/images/hero/pedesaan1.jpeg"
     },
     {
       "_id": "6a6129bd9599472c552c1ac2",
@@ -16,7 +17,8 @@
       "kabupaten": "Kabupaten Bogor",
       "latitude": -6.7023,
       "longitude": 106.9512,
-      "deskripsi": "Desa Tugu Utara terletak di lereng Gunung Gede Pangrango, Cisarua, Bogor, pada ketinggian 900-1.500 mdpl. Sentra hortikultura, kopi, dan lebah madu di kawasan Puncak Bogor."
+      "deskripsi": "Desa Tugu Utara terletak di lereng Gunung Gede Pangrango, Cisarua, Bogor, pada ketinggian 900-1.500 mdpl. Sentra hortikultura, kopi, dan lebah madu di kawasan Puncak Bogor.",
+      "foto": "/images/hero/pedesaan2.jpeg"
     },
     {
       "_id": "6a6129bd9599472c552c1ac3",
@@ -25,7 +27,8 @@
       "kabupaten": "Kabupaten Bangli",
       "latitude": -8.4522,
       "longitude": 115.3524,
-      "deskripsi": "Desa adat Penglipuran di Bangli, Bali, terkenal dengan kelestarian budaya dan arsitektur tradisional. Dikelilingi hutan bambu, mendukung budidaya jeruk kintamani, kakao, kopi, dan lebah madu trigona."
+      "deskripsi": "Desa adat Penglipuran di Bangli, Bali, terkenal dengan kelestarian budaya dan arsitektur tradisional. Dikelilingi hutan bambu, mendukung budidaya jeruk kintamani, kakao, kopi, dan lebah madu trigona.",
+      "foto": "/images/hero/pedesaan3.jpeg"
     },
     {
       "_id": "6a6129bd9599472c552c1ac4",
@@ -34,7 +37,8 @@
       "kabupaten": "Kabupaten Bandung Barat",
       "latitude": -6.8123,
       "longitude": 107.6512,
-      "deskripsi": "Desa Cibodas di Lembang, Bandung Barat, pada ketinggian 1.250-1.500 mdpl. Tanah vulkanik subur ideal untuk sayuran organik seperti brokoli dan stroberi, serta kopi arabika dan lebah madu kaliandra."
+      "deskripsi": "Desa Cibodas di Lembang, Bandung Barat, pada ketinggian 1.250-1.500 mdpl. Tanah vulkanik subur ideal untuk sayuran organik seperti brokoli dan stroberi, serta kopi arabika dan lebah madu kaliandra.",
+      "foto": "/images/hero/pedesaan4.jpeg"
     },
     {
       "_id": "6a6129bd9599472c552c1ac5",
@@ -43,7 +47,8 @@
       "kabupaten": "Kabupaten Gunungkidul",
       "latitude": -7.8522,
       "longitude": 110.5123,
-      "deskripsi": "Desa Wisata Nglanggeran di Gunungkidul, Yogyakarta, terkenal dengan Gunung Api Purba dan budidaya kakao. Masyarakat mengolah kakao menjadi cokelat premium, snack, dan minuman khas desa."
+      "deskripsi": "Desa Wisata Nglanggeran di Gunungkidul, Yogyakarta, terkenal dengan Gunung Api Purba dan budidaya kakao. Masyarakat mengolah kakao menjadi cokelat premium, snack, dan minuman khas desa.",
+      "foto": "/images/hero/pedesaan5.jpeg"
     },
     {
       "_id": "6a6129bd9599472c552c1ac6",
@@ -52,7 +57,8 @@
       "kabupaten": "Kabupaten Bandung",
       "latitude": -7.1623,
       "longitude": 107.5812,
-      "deskripsi": "Desa Margamulya di Pangalengan, Bandung, pada ketinggian 1.000-1.400 mdpl. Sentra kopi arabika, teh premium, dan madu hutan dengan cita rasa khas dataran tinggi Jawa Barat."
+      "deskripsi": "Desa Margamulya di Pangalengan, Bandung, pada ketinggian 1.000-1.400 mdpl. Sentra kopi arabika, teh premium, dan madu hutan dengan cita rasa khas dataran tinggi Jawa Barat.",
+      "foto": "/images/hero/pedesaan6.jpeg"
     },
     {
       "_id": "6a6129bd9599472c552c1ac7",
@@ -61,7 +67,8 @@
       "kabupaten": "Kabupaten Wonosobo",
       "latitude": -7.2523,
       "longitude": 109.9212,
-      "deskripsi": "Desa Tambi di Kejajar, Wonosobo, Jawa Tengah, pada ketinggian 1.200-1.800 mdpl. Sentra teh hijau dan teh hitam premium. Juga menghasilkan carica, purwaceng, dan herbal khas Dieng."
+      "deskripsi": "Desa Tambi di Kejajar, Wonosobo, Jawa Tengah, pada ketinggian 1.200-1.800 mdpl. Sentra teh hijau dan teh hitam premium. Juga menghasilkan carica, purwaceng, dan herbal khas Dieng.",
+      "foto": "/images/hero/pedesaan7.jpeg"
     },
     {
       "_id": "6a6129bd9599472c552c1ac8",
@@ -70,7 +77,8 @@
       "kabupaten": "Kabupaten Malang",
       "latitude": -7.9822,
       "longitude": 112.9012,
-      "deskripsi": "Desa Ngadas di lereng Gunung Bromo, Malang, Jawa Timur, pada ketinggian 2.000 mdpl. Sentra pertanian dataran tinggi menghasilkan kentang, wortel, kubis, dan sayuran organik berkualitas."
+      "deskripsi": "Desa Ngadas di lereng Gunung Bromo, Malang, Jawa Timur, pada ketinggian 2.000 mdpl. Sentra pertanian dataran tinggi menghasilkan kentang, wortel, kubis, dan sayuran organik berkualitas.",
+      "foto": "/images/hero/pedesaan8.jpeg"
     }
   ],
   "umkms": [

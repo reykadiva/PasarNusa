@@ -62,10 +62,10 @@ const desaImages = [
   "/images/hero/pedesaan2.jpeg",
   "/images/hero/pedesaan3.jpeg",
   "/images/hero/pedesaan4.jpeg",
-  "/images/hero/pedesaan1.jpeg",
-  "/images/hero/pedesaan2.jpeg",
-  "/images/hero/pedesaan3.jpeg",
-  "/images/hero/pedesaan4.jpeg",
+  "/images/hero/pedesaan5.jpeg",
+  "/images/hero/pedesaan6.jpeg",
+  "/images/hero/pedesaan7.jpeg",
+  "/images/hero/pedesaan8.jpeg",
 ];
 
 const heroBackgrounds = [
