@@ -280,7 +280,7 @@ export default function CeritaProdukPage() {
         <section className="px-5 mt-8">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center">
-              <IconSparkles className="w-4 h-4 text-gold-400" />
+              <SparklesIcon className="w-4 h-4 text-gold-400" />
             </div>
             <h2 className="text-lg font-bold text-white">Kisah Produk & Asal Usul</h2>
           </div>
@@ -465,7 +465,7 @@ export default function CeritaProdukPage() {
           <section className="px-5 mt-8">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                <IconHeart className="w-4 h-4 text-green-300" />
+                <BenefitIcon className="w-4 h-4 text-green-300" />
               </div>
               <h2 className="text-lg font-bold text-white">Manfaat</h2>
             </div>

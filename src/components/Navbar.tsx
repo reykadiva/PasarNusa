@@ -188,7 +188,10 @@ export default function Navbar() {
             <>
               <Link href="/profile" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 dark:text-gray-300">Data Diri</Link>
               {user.user_metadata?.role === "admin" && (
-                <Link href="/admin" onClick={() => setIsOpen(false)} className="block px-3 py-2 rounded-md text-base font-semibold text-gold-600 dark:text-gold-400">Dashboard Admin</Link>
+                <Link href="/admin" onClick={() => setIsOpen(false)} className="px-3 py-2 rounded-md text-base font-semibold text-gold-600 dark:text-gold-400 flex items-center gap-2">
+                  <CrownIcon className="w-5 h-5 text-gold-500" />
+                  <span>Dashboard Admin</span>
+                </Link>
               )}
               <button onClick={handleLogout} className="w-full text-left px-3 py-2 rounded-md text-base font-semibold text-red-600">Keluar</button>
             </>
