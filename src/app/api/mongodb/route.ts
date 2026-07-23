@@ -46,6 +46,7 @@ export async function GET(request: Request) {
     const fallbackData = (mockData as any)[collectionName] || [];
     return NextResponse.json({
       source: "Mock Fallback Data",
+      error: error.message || String(error),
       collection: collectionName,
       total: fallbackData.length,
       data: fallbackData,
