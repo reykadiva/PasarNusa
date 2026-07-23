@@ -68,6 +68,9 @@ function ProdukContent() {
 
   // Read URL search params on mount or URL change
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    }
     const katParam = searchParams.get("kategori");
     const desaParam = searchParams.get("desa");
     const searchParam = searchParams.get("search");

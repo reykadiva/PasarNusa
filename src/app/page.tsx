@@ -204,6 +204,7 @@ export default async function Home() {
               <Link
                 key={cat}
                 href={`/produk?kategori=${encodeURIComponent(cat)}`}
+                scroll={true}
                 className="card group flex flex-col items-center gap-3 p-6 text-center cursor-pointer hover:scale-105 transition-transform duration-300"
               >
                 <span className="transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
