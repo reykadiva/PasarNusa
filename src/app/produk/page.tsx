@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 
 interface Produk {
@@ -31,8 +32,22 @@ interface Desa {
   nama_desa: string;
 }
 
-export default function ProdukPage() {
+const categoryNameToId: Record<string, string> = {
+  "Pertanian": "1",
+  "Kopi": "2",
+  "Madu": "3",
+  "Kerajinan": "4",
+  "Sayuran": "5",
+  "Snack": "6",
+  "Teh": "7",
+  "Cokelat": "8",
+  "Minuman": "9",
+  "Oleh-Oleh": "10",
+};
+
+function ProdukContent() {
   const supabase = createClient();
+  const searchParams = useSearchParams();
 
   const [produks, setProduks] = useState<Produk[]>([]);
   const [kategoris, setKategoris] = useState<Kategori[]>([]);
@@ -51,6 +66,24 @@ export default function ProdukPage() {
   const [totalPages, setTotalPages] = useState(1);
   const limit = 8; // items per page
 
+  // Read URL search params on mount or URL change
+  useEffect(() => {
+    const katParam = searchParams.get("kategori");
+    const desaParam = searchParams.get("desa");
+    const searchParam = searchParams.get("search");
+
+    if (katParam) {
+      const matchedId = categoryNameToId[katParam] || katParam;
+      setSelectedKategori(matchedId);
+    }
+    if (desaParam) {
+      setSelectedDesa(desaParam);
+    }
+    if (searchParam) {
+      setSearch(searchParam);
+    }
+  }, [searchParams]);
+
   // Fetch filter metadata
   useEffect(() => {
     async function fetchMetadata() {
@@ -65,32 +98,25 @@ export default function ProdukPage() {
   // Fetch products with filters & pagination
   useEffect(() => {
     async function fetchProducts() {
-      // Calculate offset
       const from = (currentPage - 1) * limit;
       const to = from + limit - 1;
 
-      // Base query
       let query = supabase
         .from("produk")
         .select("*, kategori(nama), umkm(*, desa(*))", { count: "exact" });
 
-      // Apply search (nama produk)
       if (search.trim() !== "") {
         query = query.ilike("nama", `%${search}%`);
       }
 
-      // Apply Kategori Filter
       if (selectedKategori !== "all") {
         query = query.eq("kategori_id", selectedKategori);
       }
 
-      // Apply Desa Filter
       if (selectedDesa !== "all") {
-        // Query filter via related table path
         query = query.eq("umkm.desa_id", selectedDesa);
       }
 
-      // Apply Price Range Filters
       if (minPrice !== "") {
         query = query.gte("harga", parseFloat(minPrice));
       }
@@ -98,19 +124,16 @@ export default function ProdukPage() {
         query = query.lte("harga", parseFloat(maxPrice));
       }
 
-      // Apply Sorting
       if (sortOrder === "terbaru") {
         query = query.order("created_at", { ascending: false });
       } else if (sortOrder === "terlama") {
         query = query.order("created_at", { ascending: true });
       } else if (sortOrder === "sebulan_lalu") {
-        // Filter products created within last 30 days
         const thirtyDaysAgo = new Date();
         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
         query = query.gte("created_at", thirtyDaysAgo.toISOString()).order("created_at", { ascending: false });
       }
 
-      // Pagination
       query = query.range(from, to);
 
       const { data, count, error } = await query;
@@ -118,7 +141,6 @@ export default function ProdukPage() {
       if (error) {
         console.error("Error fetching products:", error);
       } else if (data) {
-        // Filter out items where nested relation join did not match client filter
         let filteredData = data as unknown as Produk[];
         if (selectedKategori !== "all") {
           const categoryMap: Record<string, string> = {
@@ -414,5 +436,17 @@ export default function ProdukPage() {
         </main>
       </div>
     </div>
+  );
+}
+
+export default function ProdukPage() {
+  return (
+    <Suspense fallback={
+      <div className="section-container py-16 flex justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
+      </div>
+    }>
+      <ProdukContent />
+    </Suspense>
   );
 }

@@ -188,6 +188,16 @@ export const createClient = (): any => {
           }
           return chain;
         },
+        in: (field: string, values: any[]) => {
+          if (field.includes("umkm") || field === "umkm_id") {
+            filters.umkm_in = values.map((v: any) => String(v));
+          } else if (field.includes("desa") || field === "desa_id") {
+            filters.desa_in = values.map((v: any) => String(v));
+          } else {
+            filters[field + "_in"] = values.map((v: any) => String(v));
+          }
+          return chain;
+        },
         ilike: (field: string, pattern: string) => {
           searchVal = pattern.replace(/%/g, "").toLowerCase();
           return chain;
@@ -348,9 +358,19 @@ export const createClient = (): any => {
               }
             }
 
+            const mappedDesa = typeof item.desa === 'object'
+              ? item.desa
+              : mockData.desas.find((d: any) => d._id === item.desa || d.id === item.desa);
+
             return {
               ...item,
               id: itemId,
+              desa_id: item.desa ? (typeof item.desa === 'object' ? (item.desa._id || item.desa.id) : item.desa) : null,
+              desa: mappedDesa ? {
+                id: mappedDesa._id || mappedDesa.id,
+                nama_desa: mappedDesa.nama_desa,
+                kabupaten: mappedDesa.kabupaten
+              } : null,
               kategori: mappedKategori,
               umkm: mappedUmkm
             };
@@ -389,8 +409,16 @@ export const createClient = (): any => {
           // Filter by desa
           if (filters.desa) {
             mappedData = mappedData.filter((i: any) => {
-              const dId = i.umkm?.desa?.id || i.desa_id || i.id;
+              const dId = i.umkm?.desa?.id || i.umkm?.desa_id || i.desa_id || i.desa?.id || i.desa;
               return String(dId) === String(filters.desa);
+            });
+          }
+
+          // Filter by umkm_in array
+          if (filters.umkm_in && filters.umkm_in.length > 0) {
+            mappedData = mappedData.filter((i: any) => {
+              const uId = i.umkm?.id || i.umkm?._id || i.umkm_id || i.umkm;
+              return filters.umkm_in.includes(String(uId));
             });
           }
 
