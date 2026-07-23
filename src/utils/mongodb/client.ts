@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://user-nusa:reykaNusa123@cluster0.qmddv.mongodb.net/pasarnusa?retryWrites=true&w=majority";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://user-nusa:reykaNusa123@cluster0.vgjqp65.mongodb.net/pasarnusa?retryWrites=true&w=majority";
 const MONGODB_DB = "pasarnusa";
 
 let cachedClient: MongoClient | null = null;
