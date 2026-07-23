@@ -120,14 +120,33 @@ export default function ProdukPage() {
       } else if (data) {
         // Filter out items where nested relation join did not match client filter
         let filteredData = data as unknown as Produk[];
+        if (selectedKategori !== "all") {
+          const categoryMap: Record<string, string> = {
+            "1": "Pertanian",
+            "2": "Kopi",
+            "3": "Madu",
+            "4": "Kerajinan",
+            "5": "Sayuran",
+            "6": "Snack",
+            "7": "Teh",
+            "8": "Cokelat",
+            "9": "Minuman",
+            "10": "Oleh-Oleh"
+          };
+          const targetCategory = (categoryMap[String(selectedKategori)] || String(selectedKategori)).toLowerCase();
+          filteredData = filteredData.filter((p: any) => {
+            const pCatName = typeof p.kategori === 'object' ? p.kategori?.nama : p.kategori;
+            return String(pCatName).toLowerCase() === targetCategory;
+          });
+        }
         if (selectedDesa !== "all") {
           filteredData = filteredData.filter(
-            (p: any) => p.umkm && String(p.umkm.desa_id) === String(selectedDesa)
+            (p: any) => p.umkm && String(p.umkm.desa?.id || p.umkm.desa_id || p.umkm.desa) === String(selectedDesa)
           );
         }
         setProduks(filteredData);
         if (count) {
-          setTotalPages(Math.ceil(count / limit));
+          setTotalPages(Math.ceil(filteredData.length / limit));
         }
       }
     }

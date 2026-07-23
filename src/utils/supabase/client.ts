@@ -302,6 +302,20 @@ export const createClient = (): any => {
               items = mockData.desas;
             } else if (table === "umkm") {
               items = mockData.umkms;
+            } else if (table === "kategori") {
+              const katList = [
+                { id: "1", nama: "Pertanian" },
+                { id: "2", nama: "Kopi" },
+                { id: "3", nama: "Madu" },
+                { id: "4", nama: "Kerajinan" },
+                { id: "5", nama: "Sayuran" },
+                { id: "6", nama: "Snack" },
+                { id: "7", nama: "Teh" },
+                { id: "8", nama: "Cokelat" },
+                { id: "9", nama: "Minuman" },
+                { id: "10", nama: "Oleh-Oleh" }
+              ];
+              return resolve({ data: katList, count: katList.length, error: null });
             } else {
               items = mockData.produks;
             }
@@ -353,10 +367,23 @@ export const createClient = (): any => {
 
           // Filter by kategori
           if (filters.kategori) {
-            mappedData = mappedData.filter((i: any) => 
-              i.kategori?.nama?.toLowerCase() === filters.kategori.toLowerCase() ||
-              i.kategori === filters.kategori
-            );
+            const categoryMap: Record<string, string> = {
+              "1": "Pertanian",
+              "2": "Kopi",
+              "3": "Madu",
+              "4": "Kerajinan",
+              "5": "Sayuran",
+              "6": "Snack",
+              "7": "Teh",
+              "8": "Cokelat",
+              "9": "Minuman",
+              "10": "Oleh-Oleh"
+            };
+            const targetCategory = (categoryMap[String(filters.kategori)] || String(filters.kategori)).toLowerCase();
+            mappedData = mappedData.filter((i: any) => {
+              const itemCatName = typeof i.kategori === 'object' ? i.kategori?.nama : i.kategori;
+              return String(itemCatName).toLowerCase() === targetCategory;
+            });
           }
 
           // Filter by desa
